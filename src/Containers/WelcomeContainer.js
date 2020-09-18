@@ -1,12 +1,11 @@
 import React from 'react'
-import Login from '../Components/Login'
 
 class WelcomeContainer extends React.Component {
 
     render() {
 
         return(
-            <Login />
+            <h1>WelcomeContainer</h1>
         )
     }
 }

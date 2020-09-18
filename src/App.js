@@ -5,11 +5,12 @@ import Header from './Components/Header'
 import Signup from './Components/Signup'
 import HomeContainer from './Containers/HomeContainer'
 import ProfileContainer from './Containers/ProfileContainer'
+import Login from './Components/Login'
 import WelcomeContainer from './Containers/WelcomeContainer'
 class App extends React.Component {
   
   state={
-    user: undefined
+    user: null
   }
 
   componentDidMount() {
@@ -39,7 +40,7 @@ class App extends React.Component {
     .then(data => {
       if (data.jwt !== undefined) {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user})
+        this.setState({user: data.user}, ()=> this.props.history.push("/"))
       }
     })
   }
@@ -69,14 +70,16 @@ class App extends React.Component {
       <>
       <Header />
       <Switch>
-        {this.state.user !== undefined 
+        {this.state.user === null
+        
         ?
-        <>
-        <Route path="/welcome" render={() => <WelcomeContainer  />} />
+        <> 
+        <Route path="/login" render={() => <Login loginHandler={this.loginHandler} />} />
+        <Route path="/" render={() => <WelcomeContainer loginHandler={this.loginHandler} />} />
         <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
         </>
         :
-        <>
+        <> 
         <Route path="/" render={() => <HomeContainer />} />
         <Route path="/profile" render={() => <ProfileContainer />} />
         </>

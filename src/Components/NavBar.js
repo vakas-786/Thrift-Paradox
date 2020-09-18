@@ -25,6 +25,15 @@ class NavBar extends React.Component {
           background: 'darkblue'
         }}
         >Login</NavLink>
+
+        <NavLink
+        to="/"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+        >Home</NavLink>
       
       </div>
     </React.Fragment>
