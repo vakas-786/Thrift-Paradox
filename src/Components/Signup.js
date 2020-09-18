@@ -3,7 +3,10 @@ import React from 'react'
 class Signup extends React.Component {
     state = {
         username: "",
-        password: ""
+        password: "",
+        firstname: "",
+        lastname: "",
+        avatar: ""
     }
 
     changeHandler = (e) => {
@@ -26,6 +29,21 @@ class Signup extends React.Component {
             <div>
               <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/>
               <label htmlFor="password">Password</label>
+            </div>
+
+            <div>
+              <input type="firstname" name="firstname" placeholder="First Name" value={this.state.password} onChange={this.changeHandler}/>
+              <label htmlFor="firstname">First Name</label>
+            </div>
+
+            <div>
+              <input type="lastname" name="lastname" placeholder="Last Name" value={this.state.password} onChange={this.changeHandler}/>
+              <label htmlFor="lastname">Last Name</label>
+            </div>
+
+            <div>
+              <input type="avatar" name="avatar" placeholder="Profile Pic" value={this.state.password} onChange={this.changeHandler}/>
+              <label htmlFor="avatar">Profile Picture</label>
             </div>
                 
             <input type="submit" value="Sign Up" />

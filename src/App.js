@@ -1,9 +1,11 @@
 import React from 'react'
 import './App.css'
 import {  Switch, Route, withRouter } from 'react-router-dom';
-import NavBar from './Components/NavBar'
-import Login from './Components/Login'
+import Header from './Components/Header'
 import Signup from './Components/Signup'
+import HomeContainer from './Containers/HomeContainer'
+import ProfileContainer from './Containers/ProfileContainer'
+import WelcomeContainer from './Containers/WelcomeContainer'
 class App extends React.Component {
   
   state={
@@ -65,14 +67,20 @@ class App extends React.Component {
   render() {
     return(
       <>
-      <NavBar />
+      <Header />
       <Switch>
+        {this.state.user !== undefined 
+        ?
         <>
-        <Route path="/login" render={() => <Login loginHandler={this.loginHandler} />} />
+        <Route path="/welcome" render={() => <WelcomeContainer  />} />
         <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
-
         </>
-
+        :
+        <>
+        <Route path="/" render={() => <HomeContainer />} />
+        <Route path="/profile" render={() => <ProfileContainer />} />
+        </>
+        }
       </Switch>
       </>
     )

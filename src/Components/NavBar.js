@@ -11,7 +11,7 @@ const link = {
   color: 'white',
 }
  
-class Navbar extends React.Component {
+class NavBar extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -32,4 +32,4 @@ class Navbar extends React.Component {
   }
 }
  
-export default Navbar
+export default NavBar
