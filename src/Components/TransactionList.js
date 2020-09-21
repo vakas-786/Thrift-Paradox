@@ -3,7 +3,7 @@ import Transaction from './Transaction'
 
 const TransactionList = (props) => {
 
-    let renderTransactions = props.transactions.map((transactionObj) => <Transaction key={transactionObj.id} transactions={transactionObj} />)
+    let renderTransactions = props.transactions.map((transactionObj) => <Transaction key={transactionObj.id} transactions={transactionObj} deleteTransaction={props.deleteTransaction} />)
 
     return (
         <>
