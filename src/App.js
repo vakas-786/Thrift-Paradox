@@ -13,6 +13,7 @@ class App extends React.Component {
     user: null
   }
 
+
   componentDidMount() {
       let token = localStorage.getItem("token")
       if (token !== null || undefined) {
@@ -21,7 +22,7 @@ class App extends React.Component {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(response => response.json())
-        .then(data => this.setState({user: data.user}))
+        .then(data => this.setState({user: data.user}), () => this.props.history.push("/"))
       } else {
         this.props.history.push("/login")
       }
@@ -48,8 +49,9 @@ class App extends React.Component {
   logoutHandler = () => {
     localStorage.removeItem('token')
     this.props.history.push("/login")
-    this.setState({ user: false})
+    this.setState({ user: null})
   }
+
 
   signupHandler = (userObj) => {
     fetch('http://localhost:3000/api/v1/users', {
@@ -61,7 +63,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(response => response.json())
-    .then(data => this.setState({user: data.user}, ()=> this.props.history.push("/login")))
+    .then(data => this.setState({user: data.user}),()=> this.props.history.push("/login"))
   }
 
 
@@ -70,18 +72,18 @@ class App extends React.Component {
       <>
       <Header />
       <Switch>
-        {this.state.user === null
+        {this.state.user 
         
         ?
+        <> 
+        <Route path="/" render={() => <HomeContainer submitHandler={this.transactionHandler} transactions={this.state.transactions} />} />
+        <Route path="/profile" render={() => <ProfileContainer />} />
+        </>
+        :
         <> 
         <Route path="/login" render={() => <Login loginHandler={this.loginHandler} />} />
         <Route path="/" render={() => <WelcomeContainer loginHandler={this.loginHandler} />} />
         <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
-        </>
-        :
-        <> 
-        <Route path="/" render={() => <HomeContainer />} />
-        <Route path="/profile" render={() => <ProfileContainer />} />
         </>
         }
       </Switch>

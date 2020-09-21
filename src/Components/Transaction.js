@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Transaction = () => {
+
+const Transaction = (props) => {
+
+    let sign = props.transactions.amount < 0 ? '-' : '+'
 
     return(
-        <h3> Transactions </h3>
+        <li>{props.transactions.item} <span>{sign}${props.transactions.amount}</span><button>X</button></li>
     )
 }
 export default Transaction
