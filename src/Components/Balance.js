@@ -1,14 +1,21 @@
 import React from 'react'
 
-const Balance = (props) => {
+class Balance extends React.Component {
 
-    let amount = props.transactions.map(transactionObj=> transactionObj.amount)
-    let total = amount.reduce((acc, transaction) => (acc += transaction), 0).toFixed(2)
+    changHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    render() {
+        let accountAmount = this.props.account.map(accountObj => accountObj.balance)
+        let amount = this.props.transactions.map(transactionObj=> transactionObj.amount)
+        let total = amount.reduce((acc, transaction) => (acc += transaction), 0).toFixed(2)
     return(
         <>
         <h4>Balance</h4>
         <h1>${total}</h1>
         </>
     )
+    }
 }
 export default Balance

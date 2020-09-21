@@ -1,12 +1,16 @@
 import React from 'react'
 
+class Transaction extends React.Component {
 
-const Transaction = (props) => {
-
-    let sign = props.transactions.amount < 0 ? '-' : '+'
-
+    
+    clickHandler = (e) => {
+        console.log(e)
+    }
+    render() {
+        let sign = this.props.transactions.amount < 0 ? '-' : '+'
     return(
-        <li>{props.transactions.item} <span>{sign}${props.transactions.amount}</span><button>X</button></li>
+        <li>{this.props.transactions.item} <span>{sign}${Math.abs(this.props.transactions.amount)}</span><button onClick={this.clickHandler}> X</button></li>
     )
+    }
 }
 export default Transaction

@@ -5,13 +5,22 @@ import FinanceContainer from './FinanceContainer'
 class HomeContainer extends React.Component {
 
     state = {
-        transactions: []
+        transactions: [],
+        account: []
     }
 
     componentDidMount() {
         this.fetchTransactions()
+        this.fetchAccount()
+
     }
-    
+
+    fetchAccount = () => {
+        fetch('http://localhost:3000/accounts')
+        .then(response => response.json())
+        .then(data => this.setState({ account: data }))
+      }
+
     fetchTransactions = () => {
         fetch('http://localhost:3000/transactions')
         .then(response => response.json())
@@ -40,7 +49,7 @@ class HomeContainer extends React.Component {
         <>
         <h3>Home Container</h3>
         <button>Prize!!</button>
-        <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} />
+        <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} />
         </>
     )
     }
