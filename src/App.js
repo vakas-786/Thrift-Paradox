@@ -4,8 +4,10 @@ import {  Switch, Route, withRouter } from 'react-router-dom';
 import Header from './Components/Header'
 import Signup from './Components/Signup'
 import HomeContainer from './Containers/HomeContainer'
-import ProfileContainer from './Containers/ProfileContainer'
 import Login from './Components/Login'
+import Sorry from './Components/Sorry'
+import Prize from './Components/Prize'
+import ProfileContainer from './Containers/ProfileContainer'
 import WelcomeContainer from './Containers/WelcomeContainer'
 class App extends React.Component {
   
@@ -66,17 +68,36 @@ class App extends React.Component {
   }
 
 
+  clickHandler = (e) => {
+    let token = localStorage.getItem("token")
+    fetch('http://localhost:3000/api/v1/profile', {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.user.token !== 0) {
+            this.props.history.push('/prize')
+          } else if (data.user.token === 0){
+            this.props.history.push('/sorry')
+          }
+        })
+      }
+
+
   render() {
     return(
       <>
-      <Header />
+      <Header user={this.state.user} />
       <Switch>
         {this.state.user 
         
         ?
         <> 
-        <Route path="/" render={() => <HomeContainer submitHandler={this.transactionHandler} transactions={this.state.transactions} />} />
-        <Route path="/profile" render={() => <ProfileContainer />} />
+        <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
+        <Route exact path="/profile" render={() => <ProfileContainer />} />
+        <Route exact path="/prize" render={() => <Prize />} />
+        <Route exact path="/sorry" render={() => <Sorry />} />
         </>
         :
         <> 
