@@ -34,7 +34,16 @@ class NavBar extends React.Component {
           background: 'darkblue'
         }}
         >Home</NavLink>
-      
+
+        <NavLink
+        to="/profile"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+        >Profile</NavLink>
+
       </div>
     </React.Fragment>
     )

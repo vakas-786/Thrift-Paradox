@@ -6,10 +6,9 @@ class Header extends React.Component {
     render() {
 
         return(
-            <>
+            <div>
             <NavBar />
-            <h3>make a box around this header with the navbar inside</h3>
-            </>
+            </div>
         )
     }
 }

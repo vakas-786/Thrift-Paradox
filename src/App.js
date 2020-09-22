@@ -12,8 +12,7 @@ class App extends React.Component {
   state={
     user: null
   }
-
-
+  
   componentDidMount() {
       let token = localStorage.getItem("token")
       if (token !== null || undefined) {

@@ -6,15 +6,13 @@ class HomeContainer extends React.Component {
 
     state = {
         transactions: [],
-        account: [],
-        saving: ''
+        account: []
     }
 
     componentDidMount() {
         this.fetchTransactions()
         this.fetchAccount()
-
-    }
+     }
 
     fetchAccount = () => {
         fetch('http://localhost:3000/accounts')

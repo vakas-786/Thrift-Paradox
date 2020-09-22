@@ -6,6 +6,7 @@ class AddSavings extends React.Component {
         savings: 0,
     }
 
+    // have an option to withdraw savings by putting negative input to form
     
     submitHandler = (e) => {
         let amount = this.props.transactions.map(transactionObj=> transactionObj.amount)
