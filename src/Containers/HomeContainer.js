@@ -6,7 +6,8 @@ class HomeContainer extends React.Component {
 
     state = {
         transactions: [],
-        account: []
+        account: [],
+        saving: ''
     }
 
     componentDidMount() {
@@ -21,6 +22,22 @@ class HomeContainer extends React.Component {
         .then(data => this.setState({ account: data }))
       }
 
+      submitHandler = (saving, amount, total) => {
+        let origSaving = this.state.account.map(accountObj => accountObj.saving)
+        let newSaving = (parseFloat(origSaving) + parseFloat(saving))
+        origSaving = newSaving
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({saving: parseFloat(newSaving)})
+        }
+        fetch(`http://localhost:3000/accounts/${1}`, options)
+        .then(()=> this.fetchAccount())
+    }
+
     fetchTransactions = () => {
         fetch('http://localhost:3000/transactions')
         .then(response => response.json())
@@ -29,7 +46,6 @@ class HomeContainer extends React.Component {
 
     
     transactionHandler = (transObj) => {
-        console.log(transObj)
         fetch('http://localhost:3000/transactions', {
             method: 'POST',
             headers: {
@@ -64,7 +80,7 @@ class HomeContainer extends React.Component {
         <>
         <h3>Home Container</h3>
         <button>Prize!!</button>
-        <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} />
+        <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
     )
     }

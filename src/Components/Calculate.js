@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 const Calculate = (props) => {
     const amount = props.transactions.map(transactionObj=> transactionObj.amount)    
     const incomeFilter = amount.filter(trans => trans > 0)
@@ -9,8 +7,7 @@ const Calculate = (props) => {
 
     const totalExpense = (amount.filter(trans => trans < 0).reduce((acc, transaction) => (acc += transaction), 0) * -1).toFixed(2)
 
-    const savings = props.account.map(accountObj=> accountObj.saving)   
-
+    let savings = props.account.map(accountObj => accountObj.saving)
 
     return (
         <>
@@ -22,8 +19,10 @@ const Calculate = (props) => {
         <h2>Expense</h2>
         <h5>{totalExpense}</h5>
         </div>
+        <div>
         <h2>Savings</h2>
-        <h5>{savings}</h5>
+        <h5>${(Math.round(savings * 100) / 100).toFixed(2)}</h5>
+        </div>
         </>
 
     )

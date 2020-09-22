@@ -42,7 +42,7 @@ class TransactionForm extends React.Component {
             </div>
 
             <div>
-              <input type="float" name="amount" placeholder="Enter an Amount" value={this.state.amount} onChange={this.changeHandler}/>
+              <input type="number" step="00.01" name="amount" placeholder="Enter an Amount" value={this.state.amount} onChange={this.changeHandler}/>
               <label htmlFor="amount">Amount</label>
             </div>
 
