@@ -76,9 +76,9 @@ class App extends React.Component {
         })
         .then(response => response.json())
         .then(data => {
-          if (data.user.token !== 0) {
+          if (data.user.token > 0) {
             this.props.history.push('/prize')
-          } else if (data.user.token === 0){
+          } else if (data.user.token < 1){
             this.props.history.push('/sorry')
           }
         })
