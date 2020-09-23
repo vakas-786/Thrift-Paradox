@@ -17,7 +17,6 @@ class FinanceContainer extends React.Component {
         <TransactionList transactions={this.props.transactions} deleteTransaction={this.props.deleteTransaction}/>
         <TransactionForm transactions={this.props.transactions} submitHandler={this.props.submitHandler}/>
         <AddSavings submitHandler={this.props.savingHandler} transactions={this.props.transactions} account={this.props.account}/>
-        
         </>
     )
     }

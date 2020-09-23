@@ -1,9 +1,13 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = (props) => {
 
     return (
-        <h3>profile data</h3>
+        <div>
+        <h3>Prizes</h3>
+        <img src = {props.image} alt="prize"/>
+        <h5>${props.value}</h5>
+        </div>
     )
 }
 

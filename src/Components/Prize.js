@@ -15,7 +15,7 @@ class Prize extends React.Component {
 
     updateToken = () => {
         let current_token = this.props.user.token
-        let redeem = parseInt(current_token) - 1
+        let redeem = parseInt(current_token) - 1 
             const options = {
                 method: 'PATCH',
                 headers: {
