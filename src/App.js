@@ -96,7 +96,7 @@ class App extends React.Component {
         <> 
         <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
         <Route exact path="/profile" render={() => <ProfileContainer />} />
-        <Route exact path="/prize" render={() => <Prize />} />
+        <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         <Route exact path="/sorry" render={() => <Sorry />} />
         </>
         :
