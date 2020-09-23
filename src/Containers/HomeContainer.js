@@ -34,7 +34,7 @@ class HomeContainer extends React.Component {
             },
             body: JSON.stringify({saving: parseFloat(newSaving)})
         }
-        fetch(`http://localhost:3000/accounts/${6}`, options)
+        fetch(`http://localhost:3000/accounts/${2}`, options)
         .then(()=> this.fetchAccount())
     }
 

@@ -9,7 +9,7 @@ class TransactionForm extends React.Component {
             category: '',
             amount: 0,
             date: '',
-            account_id: 6
+            account_id: 2
     }
 
      changeHandler = (e) => {

@@ -1,15 +1,17 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class Prize extends React.Component {
 
     state ={
-        prize: []
+        prize: [],
+        user: []
     }
 
     fetchPrize = () => {
         fetch('http://localhost:3000/lottery')
         .then(response => response.json())
-        .then(prize => this.setState({prize: prize}))
+        .then(prize => this.setState({prize: prize}),() => console.log(this.state.prize))
     }
     
 
@@ -25,16 +27,37 @@ class Prize extends React.Component {
                 body: JSON.stringify({token: redeem})
             }
             fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`, options)
-        
+            .then(()=> this.setState({user: this.props.user}))
         }
+
+        // prizeStatus = (boolean) => {
+        //     boolean = true
+        //     const options = {
+        //         method: 'PATCH',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Accept': 'application/json',
+        //         },
+        //         body: JSON.stringify({status: boolean})
+        //     }
+        //     fetch(`http://localhost:3000/prizes/${this.state.prize.id}`, options)
+        // }
 
     componentDidMount() {
         this.fetchPrize()
         this.updateToken()
-        console.log(this.props.user.id)
+        // this.prizeStatus()
+        
+    }
+
+    componentDidUpdate(prev, after) {
+        console.log("before update", prev.user.token)
+        console.log('after update', after.user)
+
     }
 
     render() {
+        
         let image = this.state.prize.image_url
         return(
             <div>
@@ -45,4 +68,4 @@ class Prize extends React.Component {
     }
 }
 
-export default Prize
+export default withRouter(Prize)

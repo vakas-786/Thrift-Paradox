@@ -6,7 +6,8 @@ class Signup extends React.Component {
         password: "",
         firstname: "",
         lastname: "",
-        avatar: ""
+        avatar: "",
+        token: 0
     }
 
     changeHandler = (e) => {

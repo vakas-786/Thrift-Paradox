@@ -61,7 +61,7 @@ class App extends React.Component {
         accepts: "application/json", 
         "content-type": "application/json"
       },
-      body: JSON.stringify({ user: userObj })
+      body: JSON.stringify({ user: userObj }) 
     })
     .then(response => response.json())
     .then(data => this.setState({user: data.user}),()=> this.props.history.push("/login"))
