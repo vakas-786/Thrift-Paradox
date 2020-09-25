@@ -3,7 +3,7 @@ import React from 'react'
 class AddSavings extends React.Component {
 
     state= {
-        savings: 0,
+        savings: 0
     }
 
     // have an option to withdraw savings by putting negative input to form
@@ -34,7 +34,9 @@ class AddSavings extends React.Component {
               placeholder="Amount"
               step="00.01"
             />
+            {/* <label htmlFor="savings">Deposit</label> */}
             <input type="submit"/>
+
             </form>
             </>
         )

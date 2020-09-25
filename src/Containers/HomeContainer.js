@@ -1,7 +1,8 @@
 
 import React from 'react'
 import FinanceContainer from './FinanceContainer'
-import { withRouter } from 'react-router-dom';
+import History from '../Components/History'
+import {  Switch, Route, withRouter } from 'react-router-dom';
 
 
 class HomeContainer extends React.Component {
@@ -83,6 +84,12 @@ class HomeContainer extends React.Component {
         <h3>Home Container</h3>
         <button onClick={this.props.clickHandler}>Prize!!</button>
         <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
+       
+        <Switch>
+            <Route path="/history" render={() => <History />} />
+        </Switch>
+        
+        
         </>
     )
     }

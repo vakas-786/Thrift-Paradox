@@ -7,8 +7,9 @@ const TransactionList = (props) => {
     
     return (
         <>
-        <h3>Transaction History</h3>
-        {renderTransactions}
+        <h3>Recent Transactions</h3>
+        {renderTransactions.slice(0,5)}
+        {/* <button>View Full List of Transactions</button> */}
         </>
     )
 }

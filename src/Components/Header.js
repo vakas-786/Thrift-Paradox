@@ -7,7 +7,7 @@ class Header extends React.Component {
 
         return(
             <div>
-            <NavBar />
+            <NavBar logout={this.props.logout} user={this.props.user} />
             </div>
         )
     }

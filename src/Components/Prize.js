@@ -15,45 +15,17 @@ class Prize extends React.Component {
     }
     
 
-    updateToken = () => {
-        let current_token = this.props.user.token
-        let redeem = parseInt(current_token) - 1 
-            const options = {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({token: redeem})
-            }
-            fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`, options)
-            .then(()=> this.setState({user: this.props.user}))
-        }
-
-        // prizeStatus = (boolean) => {
-        //     boolean = true
-        //     const options = {
-        //         method: 'PATCH',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Accept': 'application/json',
-        //         },
-        //         body: JSON.stringify({status: boolean})
-        //     }
-        //     fetch(`http://localhost:3000/prizes/${this.state.prize.id}`, options)
-        // }
-
     componentDidMount() {
-        this.fetchPrize()
-        this.updateToken()
-        // this.prizeStatus()
-        
+          if (this.props.user.token > 0) {
+            this.fetchPrize()
+          } else if (this.props.user.token === 0){
+            this.props.history.push('/sorry')
+          }
     }
 
     componentDidUpdate(prev, after) {
         console.log("before update", prev.user.token)
         console.log('after update', after.user)
-
     }
 
     render() {

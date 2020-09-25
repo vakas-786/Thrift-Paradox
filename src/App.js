@@ -6,6 +6,7 @@ import Signup from './Components/Signup'
 import HomeContainer from './Containers/HomeContainer'
 import Login from './Components/Login'
 import Sorry from './Components/Sorry'
+import History from './Components/History'
 import Prize from './Components/Prize'
 import ProfileContainer from './Containers/ProfileContainer'
 import WelcomeContainer from './Containers/WelcomeContainer'
@@ -14,9 +15,9 @@ class App extends React.Component {
   state={
     user: null
   }
-  
-  componentDidMount() {
-      let token = localStorage.getItem("token")
+
+  fetchUser = () => {
+    let token = localStorage.getItem("token")
       if (token !== null || undefined) {
         fetch('http://localhost:3000/api/v1/profile', {
           method: "GET",
@@ -27,6 +28,10 @@ class App extends React.Component {
       } else {
         this.props.history.push("/login")
       }
+  }
+  
+  componentDidMount() {
+      this.fetchUser()
   }
 
   loginHandler = (userObj) => {
@@ -67,8 +72,16 @@ class App extends React.Component {
     .then(data => this.setState({user: data.user}),()=> this.props.history.push("/login"))
   }
 
+  logoutHandler = () => {
+    localStorage.removeItem('token')
+    this.props.history.push("/login")
+    this.setState({ user: false})
+  }
+
 
   clickHandler = (e) => {
+    this.fetchUser()
+    console.log('app state',this.state.user.token)
     let token = localStorage.getItem("token")
     fetch('http://localhost:3000/api/v1/profile', {
           method: "GET",
@@ -76,9 +89,10 @@ class App extends React.Component {
         })
         .then(response => response.json())
         .then(data => {
+          console.log('data',data)
           if (data.user.token > 0) {
             this.props.history.push('/prize')
-          } else if (data.user.token < 1){
+          } else if (data.user.token === 0){
             this.props.history.push('/sorry')
           }
         })
@@ -88,14 +102,15 @@ class App extends React.Component {
   render() {
     return(
       <>
-      <Header user={this.state.user} />
+      <Header user={this.state.user} logout={this.logoutHandler} />
       <Switch>
         {this.state.user 
         
         ?
         <> 
         <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
-        <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user}/>} />
+        <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user} fetchUser={this.fetchUser}/>} />
+        <Route path="/history" render={() => <History transactions={this.state.transactions} deleteTransaction={this.deleteTransaction} />} />
         <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         <Route exact path="/sorry" render={() => <Sorry />} />
         </>

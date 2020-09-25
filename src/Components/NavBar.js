@@ -16,7 +16,10 @@ class NavBar extends React.Component {
     return (
       <React.Fragment>
       <div>
-       
+       {this.props.user ?
+        <button onClick={this.props.logout}>
+        Logout</button>
+       :
         <NavLink
         to="/login"
         exact
@@ -25,6 +28,7 @@ class NavBar extends React.Component {
           background: 'darkblue'
         }}
         >Login</NavLink>
+      }
 
         <NavLink
         to="/"
@@ -43,6 +47,15 @@ class NavBar extends React.Component {
           background: 'darkblue'
         }}
         >Profile</NavLink>
+
+        <NavLink
+        to="/history"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+        >History</NavLink>
 
       </div>
     </React.Fragment>

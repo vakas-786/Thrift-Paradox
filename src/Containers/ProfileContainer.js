@@ -4,10 +4,15 @@ import Profile from '../Components/Profile'
 
 class ProfileContainer extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchUser()
+    }
+
 
     render() {
-        console.log(this.props.user)
-        let prize = this.props.user.prizes.map(prize => <Profile key={prize.id} prizeObj={prize} value={prize.value} image={prize.image_url}  />)
+        let filterPrize = this.props.user.prizes.filter(prize => prize.status === true)
+        // console.log(filterPrize)
+        let prize = filterPrize.map(prize => <Profile key={prize.id} prizeObj={prize} value={prize.value} image={prize.image_url}  />)
     return (
         <>
         <h2>Profile Information</h2>

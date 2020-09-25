@@ -31,14 +31,34 @@ class TransactionForm extends React.Component {
               <input type="text" name="item"  value={this.state.item} placeholder="Enter an Item" onChange={this.changeHandler} />
               <label htmlFor="item">Item</label>
             </div>
-            <div>
+            {/* <div>
               <input type="text" name="type_trans"  value={this.state.trans_type} placeholder="Income/Expense" onChange={this.changeHandler}/>
               <label htmlFor="type_trans">Income/Expense</label>
+            </div> */}
+            <div>
+              <select defaultValue='select' name="type_trans"  placeholder="Income/Expense" onChange={this.changeHandler}>
+                <option  value='select' disabled>Transaction Type</option>
+                <option name="type_trans" value='Income'>Income</option>
+                <option name="type_trans" value ='Expense'>Expense</option>
+              </select>
             </div>
 
-            <div>
+            {/* <div>
               <input type="text" name="category"  value={this.state.category} placeholder="Category" onChange={this.changeHandler}/>
               <label htmlFor="category">Category</label>
+            </div> */}
+
+            <div>
+              <select defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
+                <option name='category' value='select' disabled >Category</option>
+                <option name='category' value='Bills/Utilities'>Bills/Utilities</option>
+                <option name='category' value='Salary'>Salary</option>
+                <option name='category' value='Transfer'>Transfer</option>
+                <option name='category' value="Groceries">Groceries</option>
+                <option name='category' value='Shopping'>Shopping</option>
+                <option name='category' value='Recreation'>Recreation</option>
+                <option name='category' value='Misc'>Misc</option>
+              </select>
             </div>
 
             <div>
