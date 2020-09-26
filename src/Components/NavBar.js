@@ -57,6 +57,15 @@ class NavBar extends React.Component {
         }}
         >History</NavLink>
 
+        <NavLink
+        to="/analysis"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+        >Analysis</NavLink>
+
       </div>
     </React.Fragment>
     )

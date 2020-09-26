@@ -2,6 +2,7 @@
 import React from 'react'
 import FinanceContainer from './FinanceContainer'
 import History from '../Components/History'
+import Analysis from '../Components/Analysis'
 import {  Switch, Route, withRouter } from 'react-router-dom';
 
 
@@ -87,6 +88,7 @@ class HomeContainer extends React.Component {
        
         <Switch>
             <Route path="/history" render={() => <History />} />
+            <Route path="/analysis" render={() => <Analysis transactions={this.state.transactions} account={this.state.account} />} />
         </Switch>
         
         

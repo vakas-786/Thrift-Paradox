@@ -8,6 +8,7 @@ import Login from './Components/Login'
 import Sorry from './Components/Sorry'
 import History from './Components/History'
 import Prize from './Components/Prize'
+import Analysis from './Components/Analysis'
 import ProfileContainer from './Containers/ProfileContainer'
 import WelcomeContainer from './Containers/WelcomeContainer'
 class App extends React.Component {
@@ -110,7 +111,8 @@ class App extends React.Component {
         <> 
         <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
         <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user} fetchUser={this.fetchUser}/>} />
-        <Route path="/history" render={() => <History transactions={this.state.transactions} deleteTransaction={this.deleteTransaction} />} />
+        <Route exact path="/history" render={() => <History />} />
+        <Route exact path="/analysis" render={() => <Analysis />} />
         <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         <Route exact path="/sorry" render={() => <Sorry />} />
         </>
