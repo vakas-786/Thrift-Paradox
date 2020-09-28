@@ -40,8 +40,8 @@ class History extends React.Component {
 
         let filter = this.state.transactions.filter(trans_obj => trans_obj.category === this.state.category )
 
-        let filterTransactions = filter.map((transactionObj) => <Transaction key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
-        let renderTransactions = this.state.transactions.map((transactionObj) => <Transaction key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
+        let filterTransactions = filter.map((transactionObj, index) => <Transaction row={index} key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
+        let renderTransactions = this.state.transactions.map((transactionObj,index) => <Transaction row={index}  key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
         
         return(
             <>

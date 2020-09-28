@@ -1,4 +1,6 @@
 import React from 'react'
+import { Form, FormGroup, Label, Input, FormText  } from 'reactstrap'
+
 
 class AddSavings extends React.Component {
 
@@ -23,10 +25,10 @@ class AddSavings extends React.Component {
         // const savings = props.account.map(accountObj=> accountObj.saving)   
         
         return(
-            <>
+            <div className="add-savings-container">
             <h2>Add to Savings</h2>
-            <form onSubmit ={this.submitHandler}>
-            <input
+            <Form onSubmit ={this.submitHandler} style={{width: 300}}>
+            <Input
             onChange ={this.changeHandler}
               type="number"
               name="savings"
@@ -35,10 +37,10 @@ class AddSavings extends React.Component {
               step="00.01"
             />
             {/* <label htmlFor="savings">Deposit</label> */}
-            <input type="submit"/>
+            <Input type="submit"/>
 
-            </form>
-            </>
+            </Form>
+            </div>
         )
     }
 }

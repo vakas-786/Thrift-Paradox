@@ -3,13 +3,12 @@ import Transaction from './Transaction'
 
 const TransactionList = (props) => {
 
-    let renderTransactions = props.transactions.map((transactionObj) => <Transaction key={transactionObj.id} transactions={transactionObj} deleteTransaction={props.deleteTransaction} />)
+    let renderTransactions = props.transactions.map((transactionObj, index) => <Transaction  key={transactionObj.id} row={index} transactions={transactionObj} deleteTransaction={props.deleteTransaction} />).slice(0,4)
     
     return (
         <>
         <h3>Recent Transactions</h3>
-        {renderTransactions.slice(0,5)}
-        {/* <button>View Full List of Transactions</button> */}
+        {renderTransactions}
         </>
     )
 }

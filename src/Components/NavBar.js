@@ -1,73 +1,50 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-// import { Redirect } from 'react-router-dom'
- 
-const link = {
-  width: '100px',
-  padding: '12px',
-  margin: '0 6px 6px',
-  background: 'blue',
-  textDecoration: 'none',
-  color: 'white',
-}
+import { Button } from 'reactstrap'
+import { Navbar, Nav, NavItem, NavLink} from 'reactstrap'
  
 class NavBar extends React.Component {
   render() {
     return (
-      <React.Fragment>
       <div>
+        <Navbar color="light" light expand="md">
+        <Nav  pills>
        {this.props.user ?
-        <button onClick={this.props.logout}>
-        Logout</button>
+        <Button color ="secondary" onClick={this.props.logout}>
+        Logout</Button>
        :
-        <NavLink
-        to="/login"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
+       <NavItem  >
+        <NavLink 
+       href="/login"
         >Login</NavLink>
+        </NavItem>  
       }
-
-        <NavLink
-        to="/"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
+      <NavItem >
+        <NavLink 
+        href="/" active
         >Home</NavLink>
-
+        </NavItem>
+        
+        <NavItem >
         <NavLink
-        to="/profile"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
+        href="/profile" active
         >Profile</NavLink>
+        </NavItem>
 
+        <NavItem >
         <NavLink
-        to="/history"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
+        href="/history" active
         >History</NavLink>
-
+        </NavItem>
+        
+        <NavItem >
         <NavLink
-        to="/analysis"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
+        href="/analysis" active
         >Analysis</NavLink>
-
+        </NavItem>
+        </Nav>
+        </Navbar>
       </div>
-    </React.Fragment>
+   
     )
   }
 }

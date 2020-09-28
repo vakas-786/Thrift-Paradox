@@ -1,4 +1,5 @@
 import React from 'react'
+import { Form, FormGroup, Label, Input  } from 'reactstrap'
 
 class TransactionForm extends React.Component {
 
@@ -23,33 +24,32 @@ class TransactionForm extends React.Component {
 
     render() {
     return (
-        <>
-        
-        <form onSubmit={this.submitHandler} >
+        <div className="transaction-form-container">
+        <Form onSubmit={this.submitHandler} style={{ width: 300 }} >
             <h3>Enter a New Transaction</h3>
             <div>
-              <input type="text" name="item"  value={this.state.item} placeholder="Enter an Item" onChange={this.changeHandler} />
+              <FormGroup>
+              <Input type="text" name="item"  value={this.state.item} placeholder="Enter an Item" onChange={this.changeHandler} />
               <label htmlFor="item">Item</label>
+              </FormGroup>
             </div>
-            {/* <div>
-              <input type="text" name="type_trans"  value={this.state.trans_type} placeholder="Income/Expense" onChange={this.changeHandler}/>
-              <label htmlFor="type_trans">Income/Expense</label>
-            </div> */}
             <div>
-              <select defaultValue='select' name="type_trans"  placeholder="Income/Expense" onChange={this.changeHandler}>
+              <FormGroup>
+              <Input type="select" defaultValue='select' name="type_trans"  placeholder="Income/Expense" onChange={this.changeHandler}>
                 <option  value='select' disabled>Transaction Type</option>
                 <option name="type_trans" value='Income'>Income</option>
                 <option name="type_trans" value ='Expense'>Expense</option>
-              </select>
+              </Input>
+              </FormGroup>
             </div>
 
             {/* <div>
               <input type="text" name="category"  value={this.state.category} placeholder="Category" onChange={this.changeHandler}/>
               <label htmlFor="category">Category</label>
             </div> */}
-
-            <div>
-              <select defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
+            <div >
+              <FormGroup>
+              <Input type="select" defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
                 <option name='category' value='select' disabled >Category</option>
                 <option name='category' value='Bills/Utilities'>Bills/Utilities</option>
                 <option name='category' value='Salary'>Salary</option>
@@ -58,23 +58,26 @@ class TransactionForm extends React.Component {
                 <option name='category' value='Shopping'>Shopping</option>
                 <option name='category' value='Recreation'>Recreation</option>
                 <option name='category' value='Misc'>Misc</option>
-              </select>
+              </Input>
+              </FormGroup>
             </div>
 
             <div>
-              <input type="number" step="00.01" name="amount" placeholder="Enter an Amount" value={this.state.amount} onChange={this.changeHandler}/>
-              <label htmlFor="amount">Amount</label>
+              <FormGroup>
+              <Input type="number" step="00.01" name="amount" placeholder="Enter an Amount" value={this.state.amount} onChange={this.changeHandler}/>
+              <Label htmlFor="amount">Amount</Label>
+              </FormGroup>
             </div>
 
             <div>
-              <input type="date" name="date" placeholder="Choose a Date" value={this.state.date} onChange={this.changeHandler}/>
+              <Input type="date" name="date" placeholder="Choose a Date" value={this.state.date} onChange={this.changeHandler}/>
               <label htmlFor="date">Date</label>
             </div>
                 
-            <input type="submit" />
+            <Input type="submit"/>
             
-          </form>
-          </>
+          </Form>
+          </div>
 
     )
     }

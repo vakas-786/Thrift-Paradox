@@ -13,26 +13,39 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.balance {
+  
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.balance-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calculate-container {
+  display: flex;
+  flex-flow: row wrap;
+
+  justify-content: space-evenly;
+  padding: 50px
+}
+
+.savings-container {
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.savings-amount {
+  display: flex;
+  flex-direction: column;
+  
 }

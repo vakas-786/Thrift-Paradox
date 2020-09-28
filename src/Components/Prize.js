@@ -28,6 +28,7 @@ class Prize extends React.Component {
         console.log('after update', after.user)
     }
 
+    
     render() {
         
         let image = this.state.prize.image_url

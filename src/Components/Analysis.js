@@ -6,6 +6,9 @@ class Analysis extends React.Component {
 
     
     render() {
+      //fetch and set state with data like the constant and use it for the graph 
+
+      
         
         const data = [
             {
