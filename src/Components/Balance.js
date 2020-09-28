@@ -1,4 +1,5 @@
 import React from 'react'
+import { Jumbotron } from 'reactstrap'
 class Balance extends React.Component {
 
     render() {
@@ -15,10 +16,12 @@ class Balance extends React.Component {
         // put an alert when savings are higher than the balance total
         
     return(
-        <div >
-        <h1 className="calculate-container">Balance</h1>
-        <h1 className="balance">${finalTotal}</h1>
+        <>
+        <div className="jumbotron">
+        <h1 className="savings-header">Balance</h1>
+        <h1 className="savings-header">${finalTotal}</h1>
         </div>
+        </>
     )
     }
 }

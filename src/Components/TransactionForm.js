@@ -23,18 +23,19 @@ class TransactionForm extends React.Component {
     }
 
     render() {
+      
     return (
-        <div className="transaction-form-container">
-        <Form onSubmit={this.submitHandler} style={{ width: 300 }} >
+        <div >
             <h3>Enter a New Transaction</h3>
+        <Form onSubmit={this.submitHandler}  inline >
             <div>
-              <FormGroup>
+              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Input type="text" name="item"  value={this.state.item} placeholder="Enter an Item" onChange={this.changeHandler} />
               <label htmlFor="item">Item</label>
               </FormGroup>
             </div>
             <div>
-              <FormGroup>
+              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Input type="select" defaultValue='select' name="type_trans"  placeholder="Income/Expense" onChange={this.changeHandler}>
                 <option  value='select' disabled>Transaction Type</option>
                 <option name="type_trans" value='Income'>Income</option>

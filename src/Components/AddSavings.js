@@ -26,7 +26,7 @@ class AddSavings extends React.Component {
         
         return(
             <div className="add-savings-container">
-            <h2>Add to Savings</h2>
+            <h2 className="savings-header">Add to Savings</h2>
             <Form onSubmit ={this.submitHandler} style={{width: 300}}>
             <Input
             onChange ={this.changeHandler}

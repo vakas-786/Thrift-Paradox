@@ -11,13 +11,17 @@ class FinanceContainer extends React.Component {
     render() {
     return (
         // do i want to render the first 3 transactions here and make a seperate route with a componenet showing the full list?
-        <div>
+        <>
+        <div className="balance-box">
         <Balance transactions={this.props.transactions} account={this.props.account} />
-        <Calculate transactions={this.props.transactions} account={this.props.account} />
-        <TransactionForm transactions={this.props.transactions} submitHandler={this.props.submitHandler}/>
-        <AddSavings submitHandler={this.props.savingHandler} transactions={this.props.transactions} account={this.props.account}/>
-        <TransactionList transactions={this.props.transactions} deleteTransaction={this.props.deleteTransaction}/>
         </div>
+        <div className="calculate-box">
+        <Calculate transactions={this.props.transactions} account={this.props.account} />
+        </div>
+        <AddSavings submitHandler={this.props.savingHandler} transactions={this.props.transactions} account={this.props.account}/>
+        <TransactionForm transactions={this.props.transactions} submitHandler={this.props.submitHandler}/>
+        <TransactionList transactions={this.props.transactions} deleteTransaction={this.props.deleteTransaction}/>
+        </>
     )
     }
 }

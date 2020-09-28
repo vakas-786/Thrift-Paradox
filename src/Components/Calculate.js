@@ -15,15 +15,17 @@ const Calculate = (props) => {
     return (
         <>
         <div className="calculate-container">
-        <div >
+        <div className="income-card">
         <h2>Income</h2>
         <h5>{totalIncome}</h5>
         </div>
-        <div >
+        <div className="expense-card">
         <h2>Expense</h2>
         <h5>{totalExpense}</h5>
         </div>
         </div>
+        <br>
+        </br>
         <div className="savings-container">
         <h2>Savings</h2>
         <h5 className="savings-amount">${(Math.round(savings * 100) / 100).toFixed(2)}</h5>

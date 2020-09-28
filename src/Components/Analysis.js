@@ -3,8 +3,25 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,} from 're
 
 class Analysis extends React.Component {
 
+  state = {
+    name: ''
+  }
 
-    
+
+  fetchTransactions = () => {
+    fetch('http://localhost:3000/transactions')
+    .then(response => response.json())
+    .then(data => {
+      let date = data.map(data => data.date)
+      this.setState({name:date})
+    })
+  }
+
+
+  componentDidMount() {
+    this.fetchTransactions()
+  }
+
     render() {
       //fetch and set state with data like the constant and use it for the graph 
 
@@ -12,10 +29,10 @@ class Analysis extends React.Component {
         
         const data = [
             {
-              name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
+              name: this.state.name, uv: 4000, pv: 2400, amt: 2400,
             },
             {
-              name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
+              name: this.state.name, uv: 3000, pv: 1398, amt: 2210,
             },
             {
               name: 'Page C', uv: 2000, pv: 9800, amt: 2290,

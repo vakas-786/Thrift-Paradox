@@ -14,11 +14,10 @@ class ProfileContainer extends React.Component {
         let prize = filterPrize.map(prize => <Profile key={prize.id} prizeObj={prize} value={prize.value} image={prize.image_url}  />)
     return (
         <div>
-      <Jumbotron>
+      
         <h2>Profile Information</h2>
         <h5>Welcome {this.props.user.firstname}! Here is a list of all your prizes!</h5>
         {prize}
-        </Jumbotron>
         </div>
         
     )

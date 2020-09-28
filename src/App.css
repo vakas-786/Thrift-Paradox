@@ -14,9 +14,8 @@
 }
 
 .balance {
-  
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
 }
@@ -29,11 +28,13 @@
 }
 
 .calculate-container {
-  display: flex;
-  flex-flow: row wrap;
-
-  justify-content: space-evenly;
-  padding: 50px
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: auto auto auto;
+  grid-gap: 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
 .savings-container {
@@ -49,3 +50,45 @@
   flex-direction: column;
   
 }
+
+.jumbotron{
+padding: 5px;
+padding-top: 5px;
+padding-bottom: 5px;
+background-color: white; 
+width: 300px;
+margin: 0 auto;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.income-card {
+  padding: 5px;
+  padding-top: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 150px;
+  height: 110px;
+}
+
+.expense-card {
+  padding: 5px;
+  padding-top: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 150px;
+  height: 110px;
+}
+
+.add-savings-container {
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.savings-header {
+  text-align: center
+}
+
+.balance-header {
+  text-align: center
+}
+
