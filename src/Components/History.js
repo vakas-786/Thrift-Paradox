@@ -38,10 +38,11 @@ class History extends React.Component {
       }
     render() {
 
-        let filter = this.state.transactions.filter(trans_obj => trans_obj.category === this.state.category )
+        let sorted = this.state.transactions.sort((a, b) => b.date -a.date)
+        let filter = sorted.filter(trans_obj => trans_obj.category === this.state.category )
 
         let filterTransactions = filter.map((transactionObj, index) => <Transaction row={index} key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
-        let renderTransactions = this.state.transactions.map((transactionObj,index) => <Transaction row={index}  key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
+        let renderTransactions = sorted.map((transactionObj,index) => <Transaction row={index}  key={transactionObj.id} transactions={transactionObj} deleteTransaction={this.deleteTransaction} />)
         
         return(
             <>
@@ -56,7 +57,7 @@ class History extends React.Component {
                 <option name='category' value='Recreation'>Recreation</option>
                 <option name='category' value='Misc'>Misc</option>
               </select>
-            {this.state.category === '' ? renderTransactions : filterTransactions}
+            {this.state.category === '' ? renderTransactions.sort((a, b) => b.date -a.date) : filterTransactions.sort((a, b) => b.date -a.date)}
             </>
         )
     }

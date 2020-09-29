@@ -8,7 +8,7 @@ class Transaction extends React.Component {
     render() {
         let sign = this.props.transactions.type_trans === 'Expense' ? '-' : '+'
     return(
-        <Table>
+        <Table striped hover>
             <thead>
                 <tr>
                     <th>#</th>

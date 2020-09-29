@@ -1,19 +1,22 @@
 import React from 'react'
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,} from 'recharts'
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Cell, Legend,} from 'recharts';
+
 
 class Analysis extends React.Component {
 
   state = {
-    name: ''
-  }
+    savings: 0
+   }
+
+  
 
 
   fetchTransactions = () => {
-    fetch('http://localhost:3000/transactions')
+    fetch('http://localhost:3000/accounts')
     .then(response => response.json())
     .then(data => {
-      let date = data.map(data => data.date)
-      this.setState({name:date})
+      let savings = data.map(data => data.saving)
+      this.setState({savings: savings[0]})
     })
   }
 
@@ -23,53 +26,113 @@ class Analysis extends React.Component {
   }
 
     render() {
-      //fetch and set state with data like the constant and use it for the graph 
-
-      
+        let originalAmount = this.props.savings
         
+        let thriftOne = (originalAmount * 0.30) + originalAmount
+        let bankOne = (originalAmount * 0.15) + originalAmount
+
+        let thriftTwo = (thriftOne * 0.30) + thriftOne
+        let bankTwo = (bankOne * 0.15) + bankOne
+
+        let thriftThree = (thriftTwo * 0.30) + thriftTwo
+        let bankThree = (bankTwo * 0.15) + bankTwo
+
+        let thriftFour = (thriftThree * 0.30) + thriftThree
+        let bankFour = (bankThree * 0.15) + bankThree
+
+        let thriftFive = (thriftFour * 0.30) + thriftFour
+        let bankFive = (bankFour * 0.15) + bankFour
+
+        let thriftSix = (thriftFive * 0.30) + thriftFive
+        let bankSix = (bankFive * 0.15) + bankFive
+
+        let thriftSeven = (thriftSix * 0.30) + thriftSix
+        let bankSeven = (bankSix * 0.15) + bankSix
+
+        let thriftEight = (thriftSeven * 0.30) + thriftSeven
+        let bankEight = (bankSeven * 0.15) + bankSeven
+
+        let thriftNine = (thriftEight * 0.30) + thriftEight
+        let bankNine = (bankEight * 0.15) + bankEight
+
+        let thriftTen = (thriftNine * 0.30) + thriftNine
+        let bankTen = (bankNine * 0.15) + bankNine
+
+
         const data = [
-            {
-              name: this.state.name, uv: 4000, pv: 2400, amt: 2400,
-            },
-            {
-              name: this.state.name, uv: 3000, pv: 1398, amt: 2210,
-            },
-            {
-              name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-            },
-            {
-              name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-            },
-            {
-              name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-            },
-            {
-              name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-            },
-            {
-              name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-            },
-          ];
+          {
+            name: 2020, uv: this.props.savings, pv: this.props.savings
+          },
+          {
+            name: 2021, uv: thriftOne.toFixed(2), pv: bankOne.toFixed(2)
+          },
+          {
+            name: 2022, uv: thriftTwo.toFixed(2), pv: bankTwo.toFixed(2),
+          },
+          {
+            name: 2023, uv: thriftThree.toFixed(2), pv: bankThree.toFixed(2),
+          },
+          {
+            name: 2024, uv: thriftFour.toFixed(2), pv: bankFour.toFixed(2),
+          },
+          {
+            name: 2025, uv: thriftFive.toFixed(2), pv: bankFive.toFixed(2),
+          },
+          {
+            name: 2026, uv: thriftSix.toFixed(2), pv: bankSix.toFixed(2),
+          },
+          {
+            name: 2027, uv: thriftSeven.toFixed(2), pv: bankSeven.toFixed(2),
+          },
+          {
+            name: 2028, uv: thriftEight.toFixed(2), pv: bankEight.toFixed(2),
+          },
+          {
+            name: 2029, uv: thriftNine.toFixed(2), pv: bankNine.toFixed(2),
+          },
+          {
+            name: 2030, uv: thriftTen.toFixed(2), pv: bankTen.toFixed(2),
+          },
+    
+        ]
         
         return(
             <>
             <h1>Analysis</h1>
-            <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
+            <div>
+        <h4>Thrift Paradox Savings Over 10 Years</h4>
+        <AreaChart
+          width={400}
+          height={250}
+          data={data}
+          syncId="anyId"
+          margin={{
+            top: 10, right: 30, left: 0, bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis type="number" domain={[0, 20000]} />
+          <Tooltip />
+          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+        <p>Other Banks</p>
+        <AreaChart
+          width={400}
+          height={250}
+          data={data}
+          syncId="anyId"
+          margin={{
+            top: 10, right: 30, left: 0, bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis type="number" domain={[0, 10000]} />
+          <Tooltip />
+          <Area type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
+        </AreaChart>
+      </div>
       </>
         )
     }

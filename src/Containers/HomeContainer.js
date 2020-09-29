@@ -3,8 +3,8 @@ import React from 'react'
 import FinanceContainer from './FinanceContainer'
 import History from '../Components/History'
 import Analysis from '../Components/Analysis'
-import {Button} from 'reactstrap'
-import {  Switch, Route, withRouter } from 'react-router-dom';
+import {Button, Progress} from 'reactstrap'
+import {  Switch, Route, withRouter, Link } from 'react-router-dom';
 
 
 class HomeContainer extends React.Component {
@@ -14,10 +14,7 @@ class HomeContainer extends React.Component {
         account: []
     }
 
-    componentDidMount() {
-        this.fetchTransactions()
-        this.fetchAccount()
-     }
+    
 
     fetchAccount = () => {
         fetch('http://localhost:3000/accounts')
@@ -35,7 +32,7 @@ class HomeContainer extends React.Component {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body: JSON.stringify({saving: parseFloat(newSaving)})
+            body: JSON.stringify({saving: newSaving})
         }
         fetch(`http://localhost:3000/accounts/${2}`, options)
         .then(()=> this.fetchAccount())
@@ -44,12 +41,18 @@ class HomeContainer extends React.Component {
     fetchTransactions = () => {
         fetch('http://localhost:3000/transactions')
         .then(response => response.json())
-        .then(data => this.setState({ transactions: data }))
+        .then(data => {
+             this.setState({ transactions: data })
+        })
       }
+
+      componentDidMount() {
+        this.fetchTransactions()
+        this.fetchAccount()
+     }
 
     
     transactionHandler = (transObj) => {
-         console.log(transObj)
         fetch('http://localhost:3000/transactions', {
             method: 'POST',
             headers: {
@@ -59,8 +62,11 @@ class HomeContainer extends React.Component {
             body: JSON.stringify({ transaction: transObj })
         })
         .then(response => response.json())
-        .then(data => this.setState( {transactions: [...this.state.transactions, data]} ))
+        .then(data => { this.setState({transactions: [data, ...this.state.transactions]})})
+        .then(this.fetchTransactions())
     }
+
+    
 
     deleteTransaction = (trans_obj) => {
         console.log(trans_obj)
@@ -80,19 +86,18 @@ class HomeContainer extends React.Component {
     
 
    render() {
+       let saving = this.state.account.map(accountObj => accountObj.saving)
+
     return (
         // render the finance container here since the finance container will hold the income and expense stuff also make sure to give proper html...
         // elements and classnames so i can make flex box and other design stuff work. Can change the layout later if necessary
         <>
+        <br>
+        </br>
+         <div className="progress-heading">Save $2000 to be Eligible for a Prize!</div>
+        <Progress animated color="warning" value={saving} max={[2000]}/>
         <Button color="success" onClick={this.props.clickHandler}>Prize!!</Button>
-        <FinanceContainer transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
-       
-        <Switch>
-            <Route path="/history" render={() => <History />} />
-            <Route path="/analysis" render={() => <Analysis transactions={this.state.transactions} account={this.state.account} />} />
-        </Switch>
-        
-        
+        <FinanceContainer fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
     )
     }

@@ -17,11 +17,11 @@ const Calculate = (props) => {
         <div className="calculate-container">
         <div className="income-card">
         <h2>Income</h2>
-        <h5>{totalIncome}</h5>
+        <h5>${totalIncome}</h5>
         </div>
         <div className="expense-card">
         <h2>Expense</h2>
-        <h5>{totalExpense}</h5>
+        <h5>-${Math.abs(totalExpense)}</h5>
         </div>
         </div>
         <br>

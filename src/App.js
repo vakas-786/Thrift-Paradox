@@ -14,7 +14,10 @@ import WelcomeContainer from './Containers/WelcomeContainer'
 class App extends React.Component {
   
   state={
-    user: null
+    user: null,
+    account: [],
+    transactions: [],
+    savings: 0
   }
 
   fetchUser = () => {
@@ -30,9 +33,29 @@ class App extends React.Component {
         this.props.history.push("/login")
       }
   }
+
+  fetchAccount = () => {
+    fetch('http://localhost:3000/accounts')
+    .then(response => response.json())
+    .then(data => {
+      let savings = data.map(obj => obj.saving)
+      this.setState({ account: data, savings: savings[0] })
+    })
+  }
+
+  fetchTransactions = () => {
+    fetch('http://localhost:3000/transactions')
+    .then(response => response.json())
+    .then(data => {
+         this.setState({ transactions: data })
+    })
+  }
+  
   
   componentDidMount() {
       this.fetchUser()
+      this.fetchAccount()
+      this.fetchTransactions()
   }
 
   loginHandler = (userObj) => {
@@ -112,7 +135,7 @@ class App extends React.Component {
         <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
         <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
-        <Route exact path="/analysis" render={() => <Analysis />} />
+        <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
         <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         <Route exact path="/sorry" render={() => <Sorry />} />
         </>
