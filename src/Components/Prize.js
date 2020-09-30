@@ -1,5 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import '../App.css'
+
 
 class Prize extends React.Component {
 
@@ -14,7 +16,6 @@ class Prize extends React.Component {
         .then(prize => this.setState({prize: prize}),() => console.log(this.state.prize))
     }
     
-
     componentDidMount() {
           if (this.props.user.token > 0) {
             this.fetchPrize()
@@ -30,7 +31,6 @@ class Prize extends React.Component {
 
     
     render() {
-        
         let image = this.state.prize.image_url
         return(
             <div>

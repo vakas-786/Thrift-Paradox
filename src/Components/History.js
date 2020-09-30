@@ -1,5 +1,8 @@
 import React from 'react'
 import Transaction from './Transaction'
+import '../App.css'
+import { Input  } from 'reactstrap'
+
 
 class History extends React.Component {
 
@@ -46,9 +49,9 @@ class History extends React.Component {
         
         return(
             <>
-            <h1>History</h1>
-            <select defaultValue='' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
-                <option name='category' value=''>All</option>
+            <h1 style={{color: "white", padding: '10px'}}>History</h1>
+            <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '12%' }} type="select" defaultValue='' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
+                <option name='category' value=''  >All</option>
                 <option name='category' value='Bills/Utilities'>Bills/Utilities</option>
                 <option name='category' value='Salary'>Salary</option>
                 <option name='category' value='Transfer'>Transfer</option>
@@ -56,7 +59,9 @@ class History extends React.Component {
                 <option name='category' value='Shopping'>Shopping</option>
                 <option name='category' value='Recreation'>Recreation</option>
                 <option name='category' value='Misc'>Misc</option>
-              </select>
+              </Input>
+              <br>
+              </br>
             {this.state.category === '' ? renderTransactions.sort((a, b) => b.date -a.date) : filterTransactions.sort((a, b) => b.date -a.date)}
             </>
         )

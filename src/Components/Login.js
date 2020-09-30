@@ -1,5 +1,7 @@
 import React from 'react'
+import '../App.css'
 import {NavLink} from 'react-router-dom'
+import {Form, Button, FormGroup, Label, Input } from 'reactstrap'
 
  
 class Login extends React.Component {
@@ -21,27 +23,32 @@ submitHandler = (e) => {
   render() {
    
     return (
-      <React.Fragment>
+      <div style={{padding: '100px'}}>
 
-      <form onSubmit={this.submitHandler} >
-        <h1>Login</h1>
+      <Form  className="login-form" onSubmit={this.submitHandler} >
+        <h1 className="text-center" style={{color: 'white'}}>Login</h1>
         <div>
-          <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
-          <label htmlFor="username">Username</label>
+          <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}}>
+          <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} > </Input>
+          </FormGroup>
         </div>
         <div>
-          <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-          <label htmlFor="password">Password</label>
+          <FormGroup style={{backgroundColor: '#525f7f', color: 'white' ,border: '.0625rem solid rgba(34,42,66,.05)'}}>
+          <Input style={{backgroundColor: '#525f7f', color: "white"}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} > </Input>
+          </FormGroup>
         </div>
-        <input type="submit" value="Login" />
-      </form>
+        <Input style={{width: '20%', margin: 'auto', backgroundColor: '#525f7f', color: "white"}} type="submit" value="Login"> </Input> 
+      </Form>
+
+      <div style={{padding: '10px'}}className= "text-center">
       <NavLink to="/signup">
-      <button >
+      <Button  >
         Register
-      </button>
+      </Button>
       </NavLink>
+      </div>
       
-      </React.Fragment>
+      </div>
     )
   }
 }

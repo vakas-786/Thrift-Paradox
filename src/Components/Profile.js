@@ -1,13 +1,15 @@
 import React from 'react'
+import '../App.css'
 
 const Profile = (props) => {
 
     // console.log(props.prizeObj.status)
     return (
-        <div>
-        <h3>Prizes</h3>
-        <img src = {props.image} alt="prize"/>
-        <h5>${props.value}</h5>
+        <div className="prize-container">
+            <figure>
+        <img style={{height: '300px', width: '300px'}} src = {props.image} alt="prize"/>
+        <figcaption style={{margin: 'auto'}}>${props.value}</figcaption>
+        </figure>
         </div>
     )
 }

@@ -4,6 +4,8 @@ import FinanceContainer from './FinanceContainer'
 import History from '../Components/History'
 import Analysis from '../Components/Analysis'
 import {Button, Progress} from 'reactstrap'
+import { Badge } from 'reactstrap';
+import '../App.css'
 import {  Switch, Route, withRouter, Link } from 'react-router-dom';
 
 
@@ -62,7 +64,7 @@ class HomeContainer extends React.Component {
             body: JSON.stringify({ transaction: transObj })
         })
         .then(response => response.json())
-        .then(data => { this.setState({transactions: [data, ...this.state.transactions]})})
+        .then(data => { this.setState({transactions: [...this.state.transactions, data]})})
         .then(this.fetchTransactions())
     }
 
@@ -94,9 +96,20 @@ class HomeContainer extends React.Component {
         <>
         <br>
         </br>
-         <div className="progress-heading">Save $2000 to be Eligible for a Prize!</div>
-        <Progress animated color="warning" value={saving} max={[2000]}/>
-        <Button color="success" onClick={this.props.clickHandler}>Prize!!</Button>
+        <div className="progress-container">
+         {/* <div className="progress-heading">Save $2000 to be Eligible for a Prize!</div> */}
+         <div className="badge-container">
+            <Badge color="success" >Save $2000 to be Eligible for a Prize!</Badge>
+         </div>
+         <br></br>
+         <div className="badge-container">
+        <Button color="success" onClick={this.props.clickHandler}>Enter Lottery</Button>
+        </div>
+         <br></br>
+        <Progress animated value={saving} max={[2000]} color="warning"/>
+        </div>
+        
+        <br></br>
         <FinanceContainer fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
     )

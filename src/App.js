@@ -11,6 +11,7 @@ import Prize from './Components/Prize'
 import Analysis from './Components/Analysis'
 import ProfileContainer from './Containers/ProfileContainer'
 import WelcomeContainer from './Containers/WelcomeContainer'
+import EditTransaction from './Components/EditTransaction';
 class App extends React.Component {
   
   state={
@@ -122,21 +123,43 @@ class App extends React.Component {
         })
       }
 
+      editSubmit = (transactionObj) => {
+        console.log(transactionObj.item)
+        console.log(transactionObj.category)
+        const options = {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({item: transactionObj.item, category: transactionObj.category})
+        }
+        fetch(`http://localhost:3000/transactions/${transactionObj.id}`, options)
+        .then(()=> this.props.history.push('/history'))
+      }
+
 
   render() {
     return(
-      <>
-      <Header user={this.state.user} logout={this.logoutHandler} />
+      <div className="app-container">
       <Switch>
         {this.state.user 
         
         ?
         <> 
+        <Header user={this.state.user} logout={this.logoutHandler} />
         <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
         <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
         <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
         <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
+        <Route exact path="/transactions/:id/edit" render={({match})=> {
+                            let id = parseInt(match.params.id)
+                            let edit = this.state.transactions.find((transactionObj) => transactionObj.id ===id)
+                            return (
+                                edit ? <EditTransaction transaction={edit} submitHandler={this.editSubmit} /> : <h3>Not Found</h3>
+                            )
+                        }}/>
         <Route exact path="/sorry" render={() => <Sorry />} />
         </>
         :
@@ -147,7 +170,7 @@ class App extends React.Component {
         </>
         }
       </Switch>
-      </>
+      </div>
     )
   }
 }

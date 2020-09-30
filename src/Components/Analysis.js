@@ -1,5 +1,6 @@
 import React from 'react'
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Cell, Legend,} from 'recharts';
+import '../App.css'
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
 
 
 class Analysis extends React.Component {
@@ -7,9 +8,6 @@ class Analysis extends React.Component {
   state = {
     savings: 0
    }
-
-  
-
 
   fetchTransactions = () => {
     fetch('http://localhost:3000/accounts')
@@ -19,7 +17,6 @@ class Analysis extends React.Component {
       this.setState({savings: savings[0]})
     })
   }
-
 
   componentDidMount() {
     this.fetchTransactions()
@@ -98,9 +95,9 @@ class Analysis extends React.Component {
         
         return(
             <>
-            <h1>Analysis</h1>
-            <div>
-        <h4>Thrift Paradox Savings Over 10 Years</h4>
+            <h1 className="text-center" style={{color: "white"}}>Analysis</h1>
+            <div className="graph-container">
+        <h4 style={{color: "white"}}>Thrift Paradox Savings Over 10 Years</h4>
         <AreaChart
           width={400}
           height={250}
@@ -116,7 +113,7 @@ class Analysis extends React.Component {
           <Tooltip />
           <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
-        <p>Other Banks</p>
+        <p style={{color: "white"}}>Other Banks</p>
         <AreaChart
           width={400}
           height={250}

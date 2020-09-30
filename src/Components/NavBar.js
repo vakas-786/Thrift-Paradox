@@ -1,18 +1,19 @@
 import React from 'react'
 import { Button } from 'reactstrap'
+import '../App.css'
 import { Navbar, Nav, NavItem, NavLink} from 'reactstrap'
  
 class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar style={{backgroundColor: '#525f7f'}} light expand="md">
         <Nav  pills>
        {this.props.user ?
         <Button color ="secondary" onClick={this.props.logout}>
         Logout</Button>
        :
-       <NavItem  >
+       <NavItem >
         <NavLink 
        href="/login"
         >Login</NavLink>
@@ -30,15 +31,15 @@ class NavBar extends React.Component {
         >Profile</NavLink>
         </NavItem>
 
-        <NavItem >
+        <NavItem active >
         <NavLink
         href="/history" active
         >History</NavLink>
         </NavItem>
         
-        <NavItem >
+        <NavItem  >
         <NavLink
-        href="/analysis" active
+        href="/analysis" active 
         >Analysis</NavLink>
         </NavItem>
         </Nav>

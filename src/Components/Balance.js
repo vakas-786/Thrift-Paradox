@@ -1,5 +1,6 @@
 import React from 'react'
-import { Jumbotron } from 'reactstrap'
+import { ListGroup, ListGroupItem } from 'reactstrap'
+import '../App.css'
 class Balance extends React.Component {
 
     render() {
@@ -17,10 +18,14 @@ class Balance extends React.Component {
         
     return(
         <>
-        <div className="jumbotron">
+        <ListGroup >
+            <ListGroupItem color='info'>
+        <div>
         <h1 className="savings-header">Balance</h1>
         <h1 className="savings-header">${finalTotal}</h1>
         </div>
+        </ListGroupItem>
+        </ListGroup>
         </>
     )
     }

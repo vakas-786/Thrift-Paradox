@@ -4,6 +4,9 @@ import Balance from '../Components/Balance'
 import TransactionList from '../Components/TransactionList'
 import Calculate from '../Components/Calculate'
 import AddSavings from '../Components/AddSavings'
+import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
+import '../App.css'
+
 
 class FinanceContainer extends React.Component {
 
@@ -17,16 +20,23 @@ class FinanceContainer extends React.Component {
     render() {
         
     return (
-        // do i want to render the first 3 transactions here and make a seperate route with a componenet showing the full list?
         <>
         <div className="balance-box">
         <Balance transactions={this.props.transactions} account={this.props.account} />
         </div>
-        <div className="calculate-box">
         <Calculate transactions={this.props.transactions} account={this.props.account} />
-        </div>
+        <br></br>
+        <div className="text-center">
+        <Button  color="primary" id="toggler" style={{ marginBottom: '1rem', color: "white", padding: '10px' }}>
+      Add/Withdraw Savings
+    </Button>
+    </div>
+    <UncontrolledCollapse toggler="#toggler">
         <AddSavings submitHandler={this.props.savingHandler} transactions={this.props.transactions} account={this.props.account}/>
+    </UncontrolledCollapse>
+    <br></br>
         <TransactionForm fetchTransactions={this.props.fetchTransactions} transactions={this.props.transactions} submitHandler={this.props.submitHandler}/>
+        <br></br>
         <TransactionList  transactions={this.props.transactions} deleteTransaction={this.props.deleteTransaction}/>
         </>
     )

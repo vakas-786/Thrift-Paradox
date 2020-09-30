@@ -1,4 +1,6 @@
 import React from 'react'
+import '../App.css'
+import { ListGroup, ListGroupItem } from 'reactstrap'
 
 const Calculate = (props) => {
     const amount = props.transactions.map(transactionObj=> transactionObj.amount) 
@@ -14,22 +16,32 @@ const Calculate = (props) => {
 
     return (
         <>
+        <div className="calculate-box">
         <div className="calculate-container">
+            <ListGroup horizontal>
+                <ListGroupItem color="success">
         <div className="income-card">
-        <h2>Income</h2>
-        <h5>${totalIncome}</h5>
+        <h2 className="savings-header">Income</h2>
+        <h5 className="savings-header">${totalIncome}</h5>
         </div>
-        <div className="expense-card">
-        <h2>Expense</h2>
-        <h5>-${Math.abs(totalExpense)}</h5>
+        </ListGroupItem>
+        <ListGroupItem color ="danger">
+        <div className="income-card">
+        <h2 className="savings-header">Expense</h2>
+        <h5 className="savings-header">-${Math.abs(totalExpense)}</h5>
+        </div>
+        </ListGroupItem>
+        </ListGroup>
         </div>
         </div>
-        <br>
-        </br>
-        <div className="savings-container">
-        <h2>Savings</h2>
-        <h5 className="savings-amount">${(Math.round(savings * 100) / 100).toFixed(2)}</h5>
+        <div className="balance-box">
         </div>
+            <ListGroup  >
+        <ListGroupItem color="warning">
+        <h2 className="savings-header">Savings</h2>
+        <h5 className="savings-header">${(Math.round(savings * 100) / 100).toFixed(2)}</h5>
+        </ListGroupItem>
+        </ListGroup>
         </>
 
     )
