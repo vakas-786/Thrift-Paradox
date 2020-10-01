@@ -1,7 +1,8 @@
 import React from 'react'
 import '../App.css'
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Cell, Legend,} from 'recharts';
 import { VictoryPie } from 'victory';
+import { Input } from 'reactstrap'
 
 
 // [1.....10].map(bank => { {name:(2020+bank), money: originalamount *(1.3^bank}))
@@ -10,7 +11,8 @@ import { VictoryPie } from 'victory';
 class Analysis extends React.Component {
 
   state = {
-    savings: 0
+    savings: 0,
+    currency: ''
    }
 
   fetchTransactions = () => {
@@ -21,6 +23,10 @@ class Analysis extends React.Component {
       this.setState({savings: savings[0]})
     })
   }
+
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+}
 
   componentDidMount() {
     this.fetchTransactions()
@@ -96,9 +102,63 @@ class Analysis extends React.Component {
           },
     
         ]
+        const newRates = (() => {
+          if (this.state.category === 'Euro')
+            return parseInt(this.state.savings * 0.851534)
+          else if (this.state.category === 'Rupee')
+            return this.props.savings * 73.222693	
+            else if (this.props.category === 'Peso')
+            return this.props.savings * 76.184426	
+            else if (this.props.category === 'Canada')
+            return this.props.savings * 1.327872	
+            else if (this.props.category === 'Franc')
+            return this.props.savings * 0.918996	
+            else if (this.props.category === 'Yen')
+            return this.props.savings * 105.546282	
+            else if (this.props.category === 'Yuan')
+            return this.props.savings * 6.790051	
+        })();
+
+        console.log(newRates)
+
+        const data = [
+          {
+            name: 'Page A', USD: this.props.savings, foreign: newRates
+          }
+        ];
 
         return(
             <>
+            <div className= 'barchart'>
+            {/* <h4 style={{color: "white", padding: '10px' }}>Foreign Exchange Rates</h4> */}
+        {/* <BarChart 
+        width={500}
+        height={300}
+        data={data}
+        margin={{
+          top: 5, right: 30, left: 20, bottom: 5,
+        }}
+        >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="USD" fill="#8884d8" />
+        <Bar dataKey="foreign" fill="#82ca9d" />
+      </BarChart> */}
+      <br></br>
+      {/* <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '25%', margin: '-40px' }} type="select" defaultValue='select' name='currency'  placeholder='Select a Category' onChange={this.changeHandler}>
+                <option name='currency' value='select' disabled >Currency</option>
+                <option name='currency' value='Euro'>Euro</option>
+                <option name='currency' value='Rupee'>Rupee</option>
+                <option name='currency' value='Peso'>Peso</option>
+                <option name='currency' value="Canada">Canada</option>
+                <option name='currency' value='Franc'>Franc</option>
+                <option name='currency' value='Yen'>Yen</option>
+                <option name='currency' value='Yuan'>Yuan</option>
+              </Input> */}
+        </div>
             <div className="graph-container" >
         <h4 style={{color: "white", padding: '10px' }}>Thrift Paradox Savings Over 10 Years</h4>
         <div className='area-chart-grid'>
@@ -134,15 +194,6 @@ class Analysis extends React.Component {
           <Area type="monotone" dataKey="avg" stroke="#82ca9d" fill="#1ddb00" />
         </AreaChart>
         </div>
-        <div className='pie-grid'>
-        <VictoryPie
-            data={[
-              { x: "Cats", y: 35 },
-              { x: "Dogs", y: 40 },
-              { x: "Birds", y: 55 }
-            ]}
-            />
-            </div>
       </div>
       </>
         )

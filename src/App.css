@@ -270,6 +270,12 @@ div.savings-container > li {
   justify-content: center;
 }
 
+.barchart {
+  position: absolute;
+  right: 100px;
+  padding: 70px;
+}
+
 .delete-button {
   background: #c21525;
 }
@@ -286,3 +292,13 @@ div.savings-container > li {
   padding: 10px;
   justify-content: center;
 }
+
+/* .analysis-container {
+  width: 60vw;
+  height: 45vw;
+  display: flex;
+  flex-direction: column;
+  padding: 10 px;
+  justify-content: space-around;
+} */
+

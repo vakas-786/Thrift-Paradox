@@ -28,7 +28,7 @@ class TransactionForm extends React.Component {
     return (
         <div >
             <h3 style={{color: 'white', padding: '15px'}}>Enter a New Transaction</h3>
-        <Form className='transaction-form' style={{backgroundColor: '#525f7f', color: "white",   width: '76%', padding: '5px'}} onSubmit={this.submitHandler} inline >
+        <Form className='transaction-form' style={{backgroundColor: '#525f7f', color: "white",   width: '70%', padding: '5px'}} onSubmit={this.submitHandler} inline >
             <div>
               <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}} className="mb-2 mr-sm-2 mb-sm-0">
               <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="item"  value={this.state.item} onChange={this.changeHandler} />

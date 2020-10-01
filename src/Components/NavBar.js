@@ -7,7 +7,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className="navigation-bar" style={{backgroundColor: '#rgba(0, 0, 0, 0.2)'}} faded expand="md">
+        <Navbar className="navigation-bar" style={{backgroundColor: '#rgba(0, 0, 0, 0.2)'}}  expand="md">
         <Nav className="container-fluid" >
        {this.props.user ?
         <Button color ="secondary" onClick={this.props.logout}>
