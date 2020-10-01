@@ -8,10 +8,7 @@ class Header extends React.Component {
 
         return(
     <div>
-      
-        
         <NavBar logout={this.props.logout} user={this.props.user} />
-       
     </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter} from 'react-router-dom'
 import '../App.css'
-import { Form, FormGroup, Label, Input  } from 'reactstrap'
+import { Form, FormGroup, Input  } from 'reactstrap'
 
 
 
@@ -37,7 +37,7 @@ class EditTransaction extends React.Component {
               <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="item" value={this.state.item} placeholder="Enter an Item" onChange={this.changeHandler} />
               </FormGroup>
               <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}}>
-              <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="item" value={this.state.item} type="select" defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
+              <Input style={{backgroundColor: '#525f7f', color: "white"}}  value={this.state.category} type="select" defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>
                 <option name='category' value='select' disabled >Category</option>
                 <option name='category' value='Bills/Utilities'>Bills/Utilities</option>
                 <option name='category' value='Salary'>Salary</option>

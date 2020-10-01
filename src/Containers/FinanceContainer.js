@@ -4,7 +4,7 @@ import Balance from '../Components/Balance'
 import TransactionList from '../Components/TransactionList'
 import Calculate from '../Components/Calculate'
 import AddSavings from '../Components/AddSavings'
-import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
+import { UncontrolledCollapse, Button} from 'reactstrap';
 import '../App.css'
 
 

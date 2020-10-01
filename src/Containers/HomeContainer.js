@@ -1,12 +1,10 @@
 
 import React from 'react'
 import FinanceContainer from './FinanceContainer'
-import History from '../Components/History'
-import Analysis from '../Components/Analysis'
 import {Button, Progress} from 'reactstrap'
 import { Badge } from 'reactstrap';
 import '../App.css'
-import {  Switch, Route, withRouter, Link } from 'react-router-dom';
+import {  withRouter} from 'react-router-dom';
 
 
 class HomeContainer extends React.Component {
@@ -97,13 +95,11 @@ class HomeContainer extends React.Component {
         <br>
         </br>
         <div className="progress-container">
-         {/* <div className="progress-heading">Save $2000 to be Eligible for a Prize!</div> */}
          <div className="badge-container">
-            <Badge color="success" >Save $2000 to be Eligible for a Prize!</Badge>
+            <h4><Badge color="success" >Save $2000 to be Eligible for a Prize!</Badge></h4>
          </div>
-         <br></br>
          <div className="badge-container">
-        <Button color="success" onClick={this.props.clickHandler}>Enter Lottery</Button>
+        <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button>
         </div>
          <br></br>
         <Progress animated value={saving} max={[2000]} color="warning"/>

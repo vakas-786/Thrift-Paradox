@@ -81,11 +81,64 @@ color: white;
 }
 
 .savings-header {
-  text-align: center
+  text-align: center;
+  color: #9A7D0A;
+}
+
+.expense-header {
+  text-align: center;
+  color: #922B21 ;
 }
 
 .balance-header {
   text-align: center
+}
+
+.balance-element {
+  /* box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow:  4px 8px 0 rgba(111, 170, 238, 0.2), 0 6px 20px 0 rgba(66, 185, 221, 0.19);
+  border: .0625rem solid rgba(34,42,66,.05);
+  border-radius: auto;
+}
+
+#balance-element {
+  background-color: #339DD7;
+}
+
+.balance-heading {
+  color: #185677;
+}
+#income-element {
+  background: #5BBE70;
+}
+
+.income-header{
+  text-align: center ;
+  color: #008000	 ;
+}
+
+.expense-element {
+  /* box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow:  4px 8px 0 rgba(62, 142, 233, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: .0625rem solid rgba(34,42,66,.05);
+  border-radius: auto;
+}
+
+.income-element {
+  box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: .0625rem solid rgba(34,42,66,.05);
+  border-radius: auto;
+}
+
+.savings-element {
+  box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: .0625rem solid rgba(34,42,66,.05);
+  border-radius: auto;
+  background: gold;
+}
+
+#expense-element {
+  background: #FF4346;
 }
 
 .progress-heading {
@@ -97,11 +150,17 @@ color: white;
 div.progress {
   display: flex;
   height: 3rem;
+  width: 50%;
+  margin: auto;
   overflow: hidden;
   line-height: 0;
   font-size: .75rem;
   border-radius: .30rem;
   background-color: #525f7f;
+  box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: .0625rem solid rgba(34,42,66,.05);
+ 
+
 }
 
 li.list-group-item {
@@ -110,7 +169,7 @@ padding-top: 5px;
 padding-bottom: 5px;
 width: 300px;
 margin: 0 auto;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div.savings-container > li {
@@ -146,7 +205,34 @@ div.savings-container > li {
   height: 100%;
 }
   
+.transaction-form {
+  box-shadow: 0 4px 8px 0 rgba(139, 135, 135, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
 
+.transaction-table {
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(139, 135, 135, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navigation-bar {
+  background-color: rgba(62, 142, 233, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(62, 142, 233, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-link-tag {
+  color: #edf2f7;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nav-link-tag:hover {
+  color: gold;
+}
+
+#savings-element{
+  background: 'gold'
+}
 /* .profile-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -162,4 +248,41 @@ div.savings-container > li {
 .graph-container {
   margin: auto;
   padding: 10px;
+}
+
+.sorry-container {
+  padding: 10px;
+  justify-content: center;
+}
+
+.prize-image-container {
+  margin-left: -10px;
+  margin-right: -10px;
+  width: calc(100% + 25px);
+}
+
+
+
+.pie-grid {
+  display: grid;
+  flex-direction: row;
+  padding: 50px;
+  justify-content: center;
+}
+
+.delete-button {
+  background: #c21525;
+}
+
+#sorry-heading{
+  color: white; 
+  padding: 75px;
+}
+
+.prize-figure {
+  color: white;
+  display: grid;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: center;
 }

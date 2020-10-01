@@ -15,7 +15,8 @@
     "react-scripts": "3.4.3",
     "react-sky": "^1.1.0",
     "reactstrap": "^8.6.0",
-    "recharts": "^1.8.5"
+    "recharts": "^1.8.5",
+    "victory": "^35.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

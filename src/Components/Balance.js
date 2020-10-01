@@ -19,11 +19,9 @@ class Balance extends React.Component {
     return(
         <>
         <ListGroup >
-            <ListGroupItem color='info'>
-        <div>
-        <h1 className="savings-header">Balance</h1>
-        <h1 className="savings-header">${finalTotal}</h1>
-        </div>
+            <ListGroupItem id='balance-element' className='balance-element' >
+        <h1 className="balance-heading">Balance</h1>
+        <h1 className="balance-heading">${finalTotal}</h1>
         </ListGroupItem>
         </ListGroup>
         </>

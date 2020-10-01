@@ -29,7 +29,7 @@ class AddSavings extends React.Component {
         return(
             <div className="add-savings-container">
             <h2 style={{color: "white"}} className="savings-header"></h2>
-            <Form onSubmit ={this.submitHandler} style={{width: 300, backgroundColor: '#525f7f', color: "white", border: '.0625rem solid rgba(34,42,66,.05)'}}>
+            <Form className='transaction-form' onSubmit ={this.submitHandler} style={{width: 300, backgroundColor: '#525f7f', color: "white", border: '.0625rem solid rgba(34,42,66,.05)'}}>
             <Input
             style={{backgroundColor: '#525f7f', color: 'white', border: '.0625rem solid rgba(34,42,66,.05)'}}
             onChange ={this.changeHandler}

@@ -11,7 +11,7 @@ const TransactionList = (props) => {
     
     return (
         <>
-        <h3 className="text-center" style={{color: 'white', padding: '10px'}}>Recent Transactions</h3>
+        <h3 style={{color: 'white', padding: '15px'}}>Recent Transactions</h3>
         {renderTransactions.slice(0,4)}
         </>
     )

@@ -19,16 +19,16 @@ const Calculate = (props) => {
         <div className="calculate-box">
         <div className="calculate-container">
             <ListGroup horizontal>
-                <ListGroupItem color="success">
+                <ListGroupItem id='income-element' className='income-element' color="success">
         <div className="income-card">
-        <h2 className="savings-header">Income</h2>
-        <h5 className="savings-header">${totalIncome}</h5>
+        <h2 className="income-header">Income</h2>
+        <h5 className="income-header">${totalIncome}</h5>
         </div>
         </ListGroupItem>
-        <ListGroupItem color ="danger">
-        <div className="income-card">
-        <h2 className="savings-header">Expense</h2>
-        <h5 className="savings-header">-${Math.abs(totalExpense)}</h5>
+        <ListGroupItem id='expense-element' className='expense-element'>
+        <div className="income-card"> 
+        <h2 className="expense-header">Expense</h2>
+        <h5 className="expense-header">-${Math.abs(totalExpense)}</h5>
         </div>
         </ListGroupItem>
         </ListGroup>
@@ -37,7 +37,7 @@ const Calculate = (props) => {
         <div className="balance-box">
         </div>
             <ListGroup  >
-        <ListGroupItem color="warning">
+        <ListGroupItem id='savings-element' className='savings-element' style={{background: 'gold'}}>
         <h2 className="savings-header">Savings</h2>
         <h5 className="savings-header">${(Math.round(savings * 100) / 100).toFixed(2)}</h5>
         </ListGroupItem>

@@ -1,7 +1,11 @@
 import React from 'react'
 import '../App.css'
 import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+import { VictoryPie } from 'victory';
 
+
+// [1.....10].map(bank => { {name:(2020+bank), money: originalamount *(1.3^bank}))
+//try this out later 
 
 class Analysis extends React.Component {
 
@@ -56,52 +60,52 @@ class Analysis extends React.Component {
         let bankTen = (bankNine * 0.15) + bankNine
 
 
-        const data = [
+        const Intdata = [
           {
-            name: 2020, uv: this.props.savings, pv: this.props.savings
+            name: 2020, thrift: this.props.savings, avg: this.props.savings
           },
           {
-            name: 2021, uv: thriftOne.toFixed(2), pv: bankOne.toFixed(2)
+            name: 2021, thrift: thriftOne.toFixed(2), avg: bankOne.toFixed(2)
           },
           {
-            name: 2022, uv: thriftTwo.toFixed(2), pv: bankTwo.toFixed(2),
+            name: 2022, thrift: thriftTwo.toFixed(2), avg: bankTwo.toFixed(2),
           },
           {
-            name: 2023, uv: thriftThree.toFixed(2), pv: bankThree.toFixed(2),
+            name: 2023, thrift: thriftThree.toFixed(2), avg: bankThree.toFixed(2),
           },
           {
-            name: 2024, uv: thriftFour.toFixed(2), pv: bankFour.toFixed(2),
+            name: 2024, thrift: thriftFour.toFixed(2), avg: bankFour.toFixed(2),
           },
           {
-            name: 2025, uv: thriftFive.toFixed(2), pv: bankFive.toFixed(2),
+            name: 2025, thrift: thriftFive.toFixed(2), avg: bankFive.toFixed(2),
           },
           {
-            name: 2026, uv: thriftSix.toFixed(2), pv: bankSix.toFixed(2),
+            name: 2026, thrift: thriftSix.toFixed(2), avg: bankSix.toFixed(2),
           },
           {
-            name: 2027, uv: thriftSeven.toFixed(2), pv: bankSeven.toFixed(2),
+            name: 2027, thrift: thriftSeven.toFixed(2), avg: bankSeven.toFixed(2),
           },
           {
-            name: 2028, uv: thriftEight.toFixed(2), pv: bankEight.toFixed(2),
+            name: 2028, thrift: thriftEight.toFixed(2), avg: bankEight.toFixed(2),
           },
           {
-            name: 2029, uv: thriftNine.toFixed(2), pv: bankNine.toFixed(2),
+            name: 2029, thrift: thriftNine.toFixed(2), avg: bankNine.toFixed(2),
           },
           {
-            name: 2030, uv: thriftTen.toFixed(2), pv: bankTen.toFixed(2),
+            name: 2030, thrift: thriftTen.toFixed(2), avg: bankTen.toFixed(2),
           },
     
         ]
-        
+
         return(
             <>
-            <h1 className="text-center" style={{color: "white"}}>Analysis</h1>
-            <div className="graph-container">
-        <h4 style={{color: "white"}}>Thrift Paradox Savings Over 10 Years</h4>
+            <div className="graph-container" >
+        <h4 style={{color: "white", padding: '10px' }}>Thrift Paradox Savings Over 10 Years</h4>
+        <div className='area-chart-grid'>
         <AreaChart
           width={400}
           height={250}
-          data={data}
+          data={Intdata}
           syncId="anyId"
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
@@ -111,13 +115,13 @@ class Analysis extends React.Component {
           <XAxis dataKey="name" />
           <YAxis type="number" domain={[0, 20000]} />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="thrift" stroke="#00bfdb" fill='#40f3fa' />
         </AreaChart>
         <p style={{color: "white"}}>Other Banks</p>
         <AreaChart
           width={400}
           height={250}
-          data={data}
+          data={Intdata}
           syncId="anyId"
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
@@ -127,8 +131,18 @@ class Analysis extends React.Component {
           <XAxis dataKey="name" />
           <YAxis type="number" domain={[0, 10000]} />
           <Tooltip />
-          <Area type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
+          <Area type="monotone" dataKey="avg" stroke="#82ca9d" fill="#1ddb00" />
         </AreaChart>
+        </div>
+        <div className='pie-grid'>
+        <VictoryPie
+            data={[
+              { x: "Cats", y: 35 },
+              { x: "Dogs", y: 40 },
+              { x: "Birds", y: 55 }
+            ]}
+            />
+            </div>
       </div>
       </>
         )

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import {NavLink} from 'react-router-dom'
-import {Form, Button, FormGroup, Label, Input } from 'reactstrap'
+import {Form, Button, FormGroup, Input } from 'reactstrap'
 
  
 class Login extends React.Component {
@@ -26,7 +26,7 @@ submitHandler = (e) => {
       <div style={{padding: '100px'}}>
 
       <Form  className="login-form" onSubmit={this.submitHandler} >
-        <h1 className="text-center" style={{color: 'white'}}>Login</h1>
+        <h1 className="text-center" style={{color: 'white'}}>Thrift Paradox</h1>
         <div>
           <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}}>
           <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} > </Input>
