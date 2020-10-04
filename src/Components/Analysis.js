@@ -102,38 +102,39 @@ class Analysis extends React.Component {
           },
     
         ]
-        const newRates = (() => {
-          if (this.state.category === 'Euro')
-            return parseInt(this.state.savings * 0.851534)
-          else if (this.state.category === 'Rupee')
-            return this.props.savings * 73.222693	
-            else if (this.props.category === 'Peso')
-            return this.props.savings * 76.184426	
-            else if (this.props.category === 'Canada')
-            return this.props.savings * 1.327872	
-            else if (this.props.category === 'Franc')
-            return this.props.savings * 0.918996	
-            else if (this.props.category === 'Yen')
-            return this.props.savings * 105.546282	
-            else if (this.props.category === 'Yuan')
-            return this.props.savings * 6.790051	
-        })();
+        let newRates = (() => {
+          if (this.state.currency === 'Euro') {
+            return this.state.savings * 0.851534
+          } else if (this.state.currency === 'Rupee') {
+            return this.state.savings * 73.222693	
+          } else if (this.state.currency === 'Peso') {
+            return this.state.savings * 76.184426	
+          } else if (this.state.currency === 'Canada') {
+            return this.state.savings * 1.327872	
+          } else if (this.state.currency === 'Franc') {
+            return this.state.savings * 0.918996	
+          } else if (this.state.currency === 'Yen') {
+            return this.state.savings * 105.546282	
+          } else if (this.state.currency === 'Yuan') {
+            return this.state.savings * 6.790051	
+          }
+        })()
 
-        console.log(newRates)
-
+        console.log('newRate', this.state.currency)
+        
         const data = [
           {
             name: 'Page A', USD: this.props.savings, foreign: newRates
           }
         ];
-
+        
         return(
             <>
             <div className= 'barchart'>
-            {/* <h4 style={{color: "white", padding: '10px' }}>Foreign Exchange Rates</h4> */}
-        {/* <BarChart 
+            <h4 style={{color: "white", padding: '10px' }}>Foreign Exchange Rates</h4> 
+        <BarChart 
         width={500}
-        height={300}
+        height={500}
         data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
@@ -146,18 +147,18 @@ class Analysis extends React.Component {
         <Legend />
         <Bar dataKey="USD" fill="#8884d8" />
         <Bar dataKey="foreign" fill="#82ca9d" />
-      </BarChart> */}
+      </BarChart> 
       <br></br>
-      {/* <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '25%', margin: '-40px' }} type="select" defaultValue='select' name='currency'  placeholder='Select a Category' onChange={this.changeHandler}>
+      <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '25%', margin: '-40px' }} type="select" defaultValue='select' name='currency'  placeholder='Select a Category' onChange={this.changeHandler}>
                 <option name='currency' value='select' disabled >Currency</option>
                 <option name='currency' value='Euro'>Euro</option>
                 <option name='currency' value='Rupee'>Rupee</option>
                 <option name='currency' value='Peso'>Peso</option>
-                <option name='currency' value="Canada">Canada</option>
+                <option name='currency' value='Canada'>Canada</option>
                 <option name='currency' value='Franc'>Franc</option>
                 <option name='currency' value='Yen'>Yen</option>
                 <option name='currency' value='Yuan'>Yuan</option>
-              </Input> */}
+              </Input> 
         </div>
             <div className="graph-container" >
         <h4 style={{color: "white", padding: '10px' }}>Thrift Paradox Savings Over 10 Years</h4>
