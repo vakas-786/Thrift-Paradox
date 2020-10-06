@@ -11,15 +11,20 @@ class HomeContainer extends React.Component {
 
     state = {
         transactions: [],
-        account: []
+        account: [],
+        account_id: 0
     }
+
 
     
 
     fetchAccount = () => {
         fetch('http://localhost:3000/accounts')
         .then(response => response.json())
-        .then(data => this.setState({ account: data }))
+        .then(data => {
+            let id = data.map(account => account.id)
+            this.setState({ account: data, account_id: id })
+        })
       }
 
       submitHandler = (saving, amount, total) => {
@@ -34,7 +39,7 @@ class HomeContainer extends React.Component {
             },
             body: JSON.stringify({saving: newSaving})
         }
-        fetch(`http://localhost:3000/accounts/${2}`, options)
+        fetch(`http://localhost:3000/accounts/${this.state.account_id}`, options)
         .then(()=> this.fetchAccount())
     }
 
@@ -52,7 +57,7 @@ class HomeContainer extends React.Component {
      }
 
     
-    transactionHandler = (transObj) => {
+     transactionHandler = (transObj) => {
         fetch('http://localhost:3000/transactions', {
             method: 'POST',
             headers: {
@@ -83,11 +88,19 @@ class HomeContainer extends React.Component {
         fetch(`http://localhost:3000/transactions/${trans_obj.id}`, options)
     }
 
+    componentDidUpdate(prev, after) {
+        console.log('prev', prev)
+        console.log( 'before', this.state.transactions)
+        console.log('after', after.transactions)
+        if (this.state.transactions !== after.transactions) {
+            this.fetchAccount()
+          this.props.fetchTransactions()
+        }
+      }
     
 
    render() {
        let saving = this.state.account.map(accountObj => accountObj.saving)
-
     return (
         // render the finance container here since the finance container will hold the income and expense stuff also make sure to give proper html...
         // elements and classnames so i can make flex box and other design stuff work. Can change the layout later if necessary
@@ -106,7 +119,7 @@ class HomeContainer extends React.Component {
         </div>
         
         <br></br>
-        <FinanceContainer fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
+        <FinanceContainer id={this.props.account_id} fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
     )
     }

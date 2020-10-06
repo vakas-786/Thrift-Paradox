@@ -18,7 +18,8 @@ class App extends React.Component {
     user: null,
     account: [],
     transactions: [],
-    savings: 0
+    savings: 0,
+    account_id: 0
   }
 
   fetchUser = () => {
@@ -35,12 +36,14 @@ class App extends React.Component {
       }
   }
 
+
   fetchAccount = () => {
     fetch('http://localhost:3000/accounts')
     .then(response => response.json())
     .then(data => {
       let savings = data.map(obj => obj.saving)
-      this.setState({ account: data, savings: savings[0] })
+      let id = data.map(obj => obj.id)
+      this.setState({ account: data, savings: savings[0], account_id: id[0] })
     })
   }
 
@@ -124,8 +127,6 @@ class App extends React.Component {
       }
 
       editSubmit = (transactionObj) => {
-        console.log(transactionObj.item)
-        console.log(transactionObj.category)
         const options = {
           method: 'PATCH',
           headers: {
@@ -138,6 +139,8 @@ class App extends React.Component {
         .then(()=> this.props.history.push('/history'))
       }
 
+      
+
 
   render() {
     return(
@@ -148,8 +151,8 @@ class App extends React.Component {
         ?
         <> 
         <Header user={this.state.user} logout={this.logoutHandler} />
-        <Route exact path="/" render={() => <HomeContainer clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
-        <Route exact path="/profile" render={() => <ProfileContainer user={this.state.user} fetchUser={this.fetchUser}/>} />
+        <Route exact path="/" render={() => <HomeContainer fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
+        <Route exact path="/profile" render={() => <ProfileContainer  user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
         <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
         <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />

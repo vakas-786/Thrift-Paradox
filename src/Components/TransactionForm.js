@@ -11,9 +11,10 @@ class TransactionForm extends React.Component {
             category: '',
             amount: 0,
             date: '',
-            account_id: 2
+            account_id: this.props.id
     }
 
+    
      changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -23,8 +24,7 @@ class TransactionForm extends React.Component {
         this.props.submitHandler(this.state)
     }
 
-    render() {
-      
+    render() {      
     return (
         <div >
             <h3 style={{color: 'white', padding: '15px'}}>Enter a New Transaction</h3>

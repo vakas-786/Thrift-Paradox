@@ -5,9 +5,9 @@ import '../App.css'
 
 const TransactionList = (props) => {
     
-    //set a timer
     let sort = props.transactions.sort((a, b) => b.date -a.date)
     let renderTransactions = (sort.map((transactionObj, index) => <Transaction  key={transactionObj.id} row={index} transactions={transactionObj} deleteTransaction={props.deleteTransaction} />))
+
     
     return (
         <>

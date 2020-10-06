@@ -274,6 +274,7 @@ div.savings-container > li {
   position: absolute;
   right: 100px;
   padding: 70px;
+  color: white;
 }
 
 .delete-button {

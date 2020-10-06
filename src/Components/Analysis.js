@@ -124,7 +124,7 @@ class Analysis extends React.Component {
         
         const data = [
           {
-            name: 'Page A', USD: this.props.savings, foreign: newRates
+            name: 'Value of Savings in Foreign Currencies', USD: this.props.savings, Foreign: newRates
           }
         ];
         
@@ -146,7 +146,7 @@ class Analysis extends React.Component {
         <Tooltip />
         <Legend />
         <Bar dataKey="USD" fill="#8884d8" />
-        <Bar dataKey="foreign" fill="#82ca9d" />
+        <Bar dataKey="Foreign" fill="#82ca9d" />
       </BarChart> 
       <br></br>
       <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '25%', margin: '-40px' }} type="select" defaultValue='select' name='currency'  placeholder='Select a Category' onChange={this.changeHandler}>
