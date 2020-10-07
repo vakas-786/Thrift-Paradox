@@ -16,9 +16,6 @@ class HomeContainer extends React.Component {
         token: this.props.user.token
     }
 
-
-    
-
     fetchAccount = () => {
         fetch('http://localhost:3000/accounts')
         .then(response => response.json())
@@ -93,9 +90,6 @@ class HomeContainer extends React.Component {
     }
 
     componentDidUpdate(prev, after) {
-        console.log('prev', prev)
-        console.log( 'before', this.state.transactions)
-        console.log('after', after.transactions)
         if (this.state.transactions !== after.transactions) {
             this.fetchAccount()
           this.props.fetchTransactions()
@@ -106,8 +100,6 @@ class HomeContainer extends React.Component {
    render() {
        let saving = this.state.account.map(accountObj => accountObj.saving)
     return (
-        // render the finance container here since the finance container will hold the income and expense stuff also make sure to give proper html...
-        // elements and classnames so i can make flex box and other design stuff work. Can change the layout later if necessary
         <>
         <br>
         </br>
@@ -124,11 +116,11 @@ class HomeContainer extends React.Component {
          <br></br>
          {saving > 2000 ?
          <>
-    <Progress animated value={saving} max={[2000]} color="warning" >%{saving<2000 ? (100*(saving/2000)).toFixed(1) : 100}</Progress>
+    <Progress animated value={parseFloat(saving)} max={2000} color="warning" >{saving<2000 ? (100*(saving/2000)).toFixed(0) : 100}%</Progress>
     </>
     :
     <>
-    <Progress animated value={saving} max={[2000]} color="success" >%{saving<2000 ? (100*(saving/2000)).toFixed(1) : 100}</Progress>
+    <Progress animated value={parseFloat(saving)} max={2000} color="success" >{saving<2000 ? (100*(saving/2000)).toFixed(0) : 100}%</Progress>
     </>
     }
 </div>

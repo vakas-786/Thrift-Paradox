@@ -1,8 +1,7 @@
 import React from 'react'
 import './App.css'
 import {  Switch, Route, withRouter } from 'react-router-dom';
-import Header from './Components/Header'
-import Signup from './Components/Signup'
+import NavBar from './Components/NavBar'
 import HomeContainer from './Containers/HomeContainer'
 import Login from './Components/Login'
 import Sorry from './Components/Sorry'
@@ -10,7 +9,6 @@ import History from './Components/History'
 import Prize from './Components/Prize'
 import Analysis from './Components/Analysis'
 import ProfileContainer from './Containers/ProfileContainer'
-import WelcomeContainer from './Containers/WelcomeContainer'
 import EditTransaction from './Components/EditTransaction';
 class App extends React.Component {
   
@@ -150,8 +148,8 @@ class App extends React.Component {
         
         ?
         <> 
-        <Header user={this.state.user} logout={this.logoutHandler} />
-        <Route exact path="/" render={() => <HomeContainer user={this.state.user} fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
+        <NavBar user={this.state.user} logout={this.logoutHandler} />
+        <Route exact path="/" render={() => <HomeContainer user={this.state.user} fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions}  />} />
         <Route exact path="/profile" render={() => <ProfileContainer  user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
         <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
@@ -168,8 +166,6 @@ class App extends React.Component {
         :
         <> 
         <Route path="/login" render={() => <Login loginHandler={this.loginHandler} />} />
-        <Route path="/" render={() => <WelcomeContainer loginHandler={this.loginHandler} />} />
-        <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
         </>
         }
       </Switch>

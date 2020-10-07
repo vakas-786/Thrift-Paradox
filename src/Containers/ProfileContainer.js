@@ -3,8 +3,6 @@ import '../App.css'
 import Profile from '../Components/Profile'
 import { Jumbotron } from 'reactstrap';
 
-
-
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
@@ -13,7 +11,7 @@ class ProfileContainer extends React.Component {
 
     render() {
         let filterPrize = this.props.user.prizes.filter(prize => prize.status === true)
-        let prize = filterPrize.map(prize => <Profile key={prize.id} prizeObj={prize} value={prize.value} image={prize.image_url}  />)
+        let prize = filterPrize.map(prize => <Profile key={prize.id} prize={prize} value={prize.value} image={prize.image_url} render={this.props.fetchUser}  />)
     return (
         <div className = 'profile-container'>
             <Jumbotron>

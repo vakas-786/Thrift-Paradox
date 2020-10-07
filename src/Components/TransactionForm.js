@@ -5,13 +5,12 @@ import { Form, FormGroup, Input  } from 'reactstrap'
 class TransactionForm extends React.Component {
 
     state = {
-
-            item: '',
-            type_trans: '',
-            category: '',
-            amount: 0,
-            date: '',
-            account_id: this.props.id
+        item: '',
+        type_trans: '',
+        category: '',
+        amount: 0,
+        date: '',
+        account_id: this.props.id
     }
 
     
@@ -44,10 +43,6 @@ class TransactionForm extends React.Component {
               </FormGroup>
             </div>
 
-            {/* <div>
-              <input type="text" name="category"  value={this.state.category} placeholder="Category" onChange={this.changeHandler}/>
-              <label htmlFor="category">Category</label>
-            </div> */}
             <div >
               <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}} >
               <Input style={{backgroundColor: '#525f7f', color: "white"}} type="select" defaultValue='select' name='category'  placeholder='Select a Category' onChange={this.changeHandler}>

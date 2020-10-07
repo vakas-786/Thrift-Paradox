@@ -1,7 +1,6 @@
 import React from 'react'
 import '../App.css'
-import {NavLink} from 'react-router-dom'
-import {Form, Button, FormGroup, Input } from 'reactstrap'
+import {Form, FormGroup, Input } from 'reactstrap'
 
  
 class Login extends React.Component {
@@ -39,15 +38,6 @@ submitHandler = (e) => {
         </div>
         <Input style={{width: '20%', margin: 'auto', backgroundColor: '#525f7f', color: "white"}} type="submit" value="Login"> </Input> 
       </Form>
-
-      <div style={{padding: '10px'}}className= "text-center">
-      <NavLink to="/signup">
-      <Button  >
-        Register
-      </Button>
-      </NavLink>
-      </div>
-      
       </div>
     )
   }

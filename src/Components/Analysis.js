@@ -1,13 +1,7 @@
 import React from 'react'
 import '../App.css'
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Cell, Legend,} from 'recharts';
-import { VictoryPie } from 'victory';
-import { Input } from 'reactstrap'
-
-
-// [1.....10].map(bank => { {name:(2020+bank), money: originalamount *(1.3^bank}))
-//try this out later 
-// keys.map(key => originalHash[key])
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Legend,} from 'recharts';
+import { Input, Badge } from 'reactstrap'
 
 class Analysis extends React.Component {
 
@@ -130,7 +124,8 @@ class Analysis extends React.Component {
         return(
             <>
             <div className= 'barchart'>
-            <h4 className='text-center' style={{color: "white", padding: '20px', margin: '20px' }}>Foreign Exchange Rates</h4> 
+            <h3 className='text-center'>Rate:<Badge color="secondary">{this.state.selected === '' ? 'Select a Currency' :(100*(this.state.rates[this.state.selected]/100)).toFixed(2)}</Badge></h3>
+            <h4 className='text-center' style={{color: "white", padding: '10px', margin: '20px' }}>Foreign Exchange Rates</h4> 
             <br></br>
             <br></br>
             <Input style={{backgroundColor: '#525f7f', color: "white", padding: '5px', width: '13%', margin: '-60px' }} type="select" defaultValue='select' name='selected'  placeholder='Select a Category' onChange={this.changeHandler}>
