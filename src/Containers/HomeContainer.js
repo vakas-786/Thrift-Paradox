@@ -25,7 +25,7 @@ class HomeContainer extends React.Component {
         })
       }
 
-      submitHandler = (saving, amount, total) => {
+      submitHandler = (saving) => {
         let origSaving = this.state.account.map(accountObj => accountObj.saving)
         let newSaving = (parseFloat(origSaving) + parseFloat(saving))
         if (saving < 2000 && newSaving > 2000) {

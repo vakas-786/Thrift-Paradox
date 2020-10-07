@@ -16,7 +16,7 @@ class AddSavings extends React.Component {
         e.preventDefault()
         this.props.submitHandler(this.state.savings, amount, total)
     }
-
+    
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
