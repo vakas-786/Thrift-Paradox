@@ -115,17 +115,20 @@ class HomeContainer extends React.Component {
          <div className="badge-container">
             <h4><Badge color="success" >Save $2000 to be Eligible for a Prize!</Badge></h4>
          </div>
+         <div className='badge-container'>
+         <h5 style={{color: 'white', padding: '5px'}}>Tokens: <Badge color="warning">{this.state.token}</Badge></h5>
+         </div>
          <div className="badge-container">
-        <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button><br></br> <h6 style={{color: 'white', padding: '5px'}}>Tokens <Badge color="secondary">{this.state.token}</Badge></h6>
+        <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button><br></br> 
         </div>
          <br></br>
          {saving > 2000 ?
          <>
-    <Progress animated value={saving} max={[2000]} color="warning" >%{(100*(saving/2000)).toFixed(1)}</Progress>
+    <Progress animated value={saving} max={[2000]} color="warning" >%{saving<2000 ? (100*(saving/2000)).toFixed(1) : 100}</Progress>
     </>
     :
     <>
-    <Progress animated value={saving} max={[2000]} color="success" >%{(100*(saving/2000)).toFixed(1)}</Progress>
+    <Progress animated value={saving} max={[2000]} color="success" >%{saving<2000 ? (100*(saving/2000)).toFixed(1) : 100}</Progress>
     </>
     }
 </div>

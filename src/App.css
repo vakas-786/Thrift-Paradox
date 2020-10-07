@@ -154,13 +154,13 @@ div.progress {
   margin: auto;
   overflow: hidden;
   line-height: 0;
-  font-size: .75rem;
+  font-size: 1rem;
+  font-weight: bold;
   border-radius: .30rem;
   background-color: #525f7f;
   box-shadow: 0 4px 8px 0 rgba(107, 101, 101, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: .0625rem solid rgba(34,42,66,.05);
- 
-
+  text-align: center;
 }
 
 li.list-group-item {
@@ -253,8 +253,8 @@ flex-direction: row;
 } */
 
 .graph-container {
-  margin: auto;
-  padding: 10px;
+  margin: 20px;
+  padding: 20px;
 }
 
 .sorry-container {
@@ -284,7 +284,7 @@ flex-direction: row;
 .barchart {
   position: absolute;
   right: 100px;
-  padding: 70px;
+  padding: 12px;
   color: white;
 }
 

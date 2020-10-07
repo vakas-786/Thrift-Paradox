@@ -13,7 +13,10 @@ class Analysis extends React.Component {
 
   state = {
     savings: 0,
-    currency: ''
+    currency: [],
+    rates: [],
+    selected: '',
+
    }
 
   fetchTransactions = () => {
@@ -31,10 +34,18 @@ class Analysis extends React.Component {
 
   componentDidMount() {
     this.fetchTransactions()
-    fetch( 'http://data.fixer.io/api/latest?access_key=5f3febe8abb29232a019f63449eedd02&format=1' )
+    fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
     .then(response => response.json())
-    .then(data => console.log(Object.keys(data.rates)))
+    .then(data =>{
+      this.setState({rates: data.rates})
+      this.setState({ currency: Object.keys(data.rates)})
+    })
   }
+
+  currencyOption = () => {
+    let currency = this.state.currency.filter(currency => currency !== 'USD')
+    return currency.map((currency, index)=> <option key={index} value={currency}>{currency}</option>)
+    }
 
     render() {
         let originalAmount = this.props.savings
@@ -107,38 +118,28 @@ class Analysis extends React.Component {
     
         ]
         let newRates = (() => {
-          if (this.state.currency === 'Euro') {
-            return this.state.savings * 0.851534
-          } else if (this.state.currency === 'Rupee') {
-            return this.state.savings * 73.222693	
-          } else if (this.state.currency === 'Peso') {
-            return this.state.savings * 76.184426	
-          } else if (this.state.currency === 'Canada') {
-            return this.state.savings * 1.327872	
-          } else if (this.state.currency === 'Franc') {
-            return this.state.savings * 0.918996	
-          } else if (this.state.currency === 'Yen') {
-            return this.state.savings * 105.546282	
-          } else if (this.state.currency === 'Yuan') {
-            return this.state.savings * 6.790051	
-          }
+          return (this.props.savings * this.state.rates[this.state.selected]).toFixed(2)
         })()
-
-        console.log('newRate', this.state.currency)
         
         const data = [
           {
             name: 'Value of Savings in Foreign Currencies', USD: this.props.savings, Foreign: newRates
           }
-        ];
-        
+        ]
+
         return(
             <>
             <div className= 'barchart'>
-            <h4 style={{color: "white", padding: '10px' }}>Foreign Exchange Rates</h4> 
+            <h4 className='text-center' style={{color: "white", padding: '20px', margin: '20px' }}>Foreign Exchange Rates</h4> 
+            <br></br>
+            <br></br>
+            <Input style={{backgroundColor: '#525f7f', color: "white", padding: '5px', width: '13%', margin: '-60px' }} type="select" defaultValue='select' name='selected'  placeholder='Select a Category' onChange={this.changeHandler}>
+                <option  value='select' disabled >Rate</option>
+                {this.currencyOption()}
+              </Input> 
         <BarChart 
         width={500}
-        height={500}
+        height={550}
         data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
@@ -149,20 +150,11 @@ class Analysis extends React.Component {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="USD" fill="#8884d8" />
-        <Bar dataKey="Foreign" fill="#82ca9d" />
+        <Bar dataKey="USD" fill="#40f3fa"/>
+        <Bar dataKey="Foreign" fill= '#FF4346'/>
       </BarChart> 
       <br></br>
-      <Input style={{backgroundColor: '#525f7f', color: "white", padding: '10px', width: '25%', margin: '-40px' }} type="select" defaultValue='select' name='currency'  placeholder='Select a Category' onChange={this.changeHandler}>
-                <option name='currency' value='select' disabled >Currency</option>
-                <option name='currency' value='Euro'>Euro</option>
-                <option name='currency' value='Rupee'>Rupee</option>
-                <option name='currency' value='Peso'>Peso</option>
-                <option name='currency' value='Canada'>Canada</option>
-                <option name='currency' value='Franc'>Franc</option>
-                <option name='currency' value='Yen'>Yen</option>
-                <option name='currency' value='Yuan'>Yuan</option>
-              </Input> 
+      
         </div>
             <div className="graph-container" >
         <h4 style={{color: "white", padding: '10px' }}>Thrift Paradox Savings Over 10 Years</h4>
