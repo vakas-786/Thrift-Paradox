@@ -19,7 +19,9 @@ class ProfileContainer extends React.Component {
             <Jumbotron>
         <h2 style={{color: "white"}}>Profile Information</h2>
         <h5 style={{color: "white"}}>Welcome {this.props.user.firstname}! Here is a list of all your prizes!</h5>
+        <div id = 'prize-container'>
         {prize}
+        </div>
         </Jumbotron>
         </div>
         

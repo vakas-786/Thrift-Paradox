@@ -7,7 +7,7 @@ const Profile = (props) => {
     return (
         <div className="prize-container">
             <figure>
-        <img style={{height: '300px', width: '300px'}} src = {props.image} alt="prize"/>
+        <img style={{height: '300px', width: '280px'}} src = {props.image} alt="prize"/>
         <figcaption style={{margin: 'auto'}}>${props.value}</figcaption>
         </figure>
         </div>

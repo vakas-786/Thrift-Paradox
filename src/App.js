@@ -151,7 +151,7 @@ class App extends React.Component {
         ?
         <> 
         <Header user={this.state.user} logout={this.logoutHandler} />
-        <Route exact path="/" render={() => <HomeContainer fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
+        <Route exact path="/" render={() => <HomeContainer user={this.state.user} fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions} user={this.state.user} />} />
         <Route exact path="/profile" render={() => <ProfileContainer  user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
         <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />

@@ -187,10 +187,17 @@ div.savings-container > li {
     width: 275px;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: grid;
-  grid-template-columns: auto auto auto;
-  flex-direction: row;
+    padding: 5px;
 }
+
+#prize-container {
+  height: 300px;
+  width: 275px;
+  display: grid;
+grid-template-columns: auto auto auto auto auto ;
+flex-direction: row;
+}
+
 
 .progress-heading {
   display: flex;
@@ -261,7 +268,11 @@ div.savings-container > li {
   width: calc(100% + 25px);
 }
 
-
+.jumbotron {
+  margin-left: -10px;
+  margin-right: -10px;
+  width: calc(100% + 25px);
+}
 
 .pie-grid {
   display: grid;

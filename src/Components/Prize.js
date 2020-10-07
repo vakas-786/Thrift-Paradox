@@ -51,7 +51,7 @@ class Prize extends React.Component {
             <>
                 {this.state.timeLeft > 0
                 ?
-                <div className='prize-image-container'>
+                <div >
                 <img className='prize-image-container' src= {require('../images/lottery.gif')} alt='lottery-gif'/>
                 </div>
                 :

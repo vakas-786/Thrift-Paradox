@@ -7,6 +7,7 @@ import { Input } from 'reactstrap'
 
 // [1.....10].map(bank => { {name:(2020+bank), money: originalamount *(1.3^bank}))
 //try this out later 
+// keys.map(key => originalHash[key])
 
 class Analysis extends React.Component {
 
@@ -30,6 +31,9 @@ class Analysis extends React.Component {
 
   componentDidMount() {
     this.fetchTransactions()
+    fetch( 'http://data.fixer.io/api/latest?access_key=5f3febe8abb29232a019f63449eedd02&format=1' )
+    .then(response => response.json())
+    .then(data => console.log(Object.keys(data.rates)))
   }
 
     render() {

@@ -12,7 +12,8 @@ class HomeContainer extends React.Component {
     state = {
         transactions: [],
         account: [],
-        account_id: 0
+        account_id: 0,
+        token: this.props.user.token
     }
 
 
@@ -30,6 +31,9 @@ class HomeContainer extends React.Component {
       submitHandler = (saving, amount, total) => {
         let origSaving = this.state.account.map(accountObj => accountObj.saving)
         let newSaving = (parseFloat(origSaving) + parseFloat(saving))
+        if (saving < 2000 && newSaving > 2000) {
+        this.setState({token: this.state.token +1})
+        }
         origSaving = newSaving
         const options = {
             method: 'PATCH',
@@ -67,7 +71,7 @@ class HomeContainer extends React.Component {
             body: JSON.stringify({ transaction: transObj })
         })
         .then(response => response.json())
-        .then(data => { this.setState({transactions: [...this.state.transactions, data]})})
+        .then(data => { this.setState({transactions: [...this.state.transactions, data], token: this.props.user.token})})
         .then(this.fetchTransactions())
     }
 
@@ -112,12 +116,20 @@ class HomeContainer extends React.Component {
             <h4><Badge color="success" >Save $2000 to be Eligible for a Prize!</Badge></h4>
          </div>
          <div className="badge-container">
-        <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button>
+        <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button><br></br> <h6 style={{color: 'white', padding: '5px'}}>Tokens <Badge color="secondary">{this.state.token}</Badge></h6>
         </div>
          <br></br>
-        <Progress animated value={saving} max={[2000]} color="warning"/>
-        </div>
-        
+         {saving > 2000 ?
+         <>
+    <Progress animated value={saving} max={[2000]} color="warning" >%{(100*(saving/2000)).toFixed(1)}</Progress>
+    </>
+    :
+    <>
+    <Progress animated value={saving} max={[2000]} color="success" >%{(100*(saving/2000)).toFixed(1)}</Progress>
+    </>
+    }
+</div>
+    
         <br></br>
         <FinanceContainer id={this.props.account_id} fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
