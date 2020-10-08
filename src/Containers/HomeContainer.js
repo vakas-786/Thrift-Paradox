@@ -28,7 +28,7 @@ class HomeContainer extends React.Component {
       submitHandler = (saving) => {
         let origSaving = this.state.account.map(accountObj => accountObj.saving)
         let newSaving = (parseFloat(origSaving) + parseFloat(saving))
-        if (saving < 2000 && newSaving > 2000) {
+        if (origSaving < 2000 && newSaving > 2000) {
         this.setState({token: this.state.token +1})
         }
         origSaving = newSaving
@@ -75,7 +75,6 @@ class HomeContainer extends React.Component {
     
 
     deleteTransaction = (trans_obj) => {
-        console.log(trans_obj)
         let newArr = this.state.transactions.filter(transactions => transactions.id !== trans_obj.id)
         this.setState({transactions: newArr})
         const options = {
@@ -86,7 +85,7 @@ class HomeContainer extends React.Component {
             },
             body: JSON.stringify(trans_obj)
         }
-        fetch(`https://thrift-paradox-api.herokuapp.com/transactions${trans_obj.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/transactions/${trans_obj.id}`, options)
     }
 
     componentDidUpdate(prev, after) {
