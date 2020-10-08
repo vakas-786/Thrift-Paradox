@@ -16,7 +16,7 @@ class History extends React.Component {
     }
 
     fetchTransactions = () => {
-        fetch('http://localhost:3000/transactions')
+        fetch('https://thrift-paradox-api.herokuapp.com/transactions')
         .then(response => response.json())
         .then(data => this.setState({ transactions: data }))
       }
@@ -33,7 +33,7 @@ class History extends React.Component {
             },
             body: JSON.stringify(trans_obj)
         }
-        fetch(`http://localhost:3000/transactions/${trans_obj.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/transactions/${trans_obj.id}`, options)
     }
 
       componentDidMount() {

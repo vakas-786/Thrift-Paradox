@@ -23,7 +23,7 @@ class App extends React.Component {
   fetchUser = () => {
     let token = localStorage.getItem("token")
       if (token !== null || undefined) {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch('https://thrift-paradox-api.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -36,7 +36,7 @@ class App extends React.Component {
 
 
   fetchAccount = () => {
-    fetch('http://localhost:3000/accounts')
+    fetch('https://thrift-paradox-api.herokuapp.com/accounts')
     .then(response => response.json())
     .then(data => {
       let savings = data.map(obj => obj.saving)
@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   fetchTransactions = () => {
-    fetch('http://localhost:3000/transactions')
+    fetch('https://thrift-paradox-api.herokuapp.com/transactions')
     .then(response => response.json())
     .then(data => {
          this.setState({ transactions: data })
@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   loginHandler = (userObj) => {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://thrift-paradox-api.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         accepts: 'application/json',
@@ -85,18 +85,7 @@ class App extends React.Component {
   }
 
 
-  signupHandler = (userObj) => {
-    fetch('http://localhost:3000/api/v1/users', {
-      method: 'POST',
-      headers: {
-        accepts: "application/json", 
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({ user: userObj }) 
-    })
-    .then(response => response.json())
-    .then(data => this.setState({user: data.user}),()=> this.props.history.push("/login"))
-  }
+  
 
   logoutHandler = () => {
     localStorage.removeItem('token')
@@ -109,7 +98,7 @@ class App extends React.Component {
     this.fetchUser()
     console.log('app state',this.state.user.token)
     let token = localStorage.getItem("token")
-    fetch('http://localhost:3000/api/v1/profile', {
+    fetch('https://thrift-paradox-api.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -133,7 +122,7 @@ class App extends React.Component {
           },
           body: JSON.stringify({item: transactionObj.item, category: transactionObj.category})
         }
-        fetch(`http://localhost:3000/transactions/${transactionObj.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/${transactionObj.id}`, options)
         .then(()=> this.props.history.push('/history'))
       }
 

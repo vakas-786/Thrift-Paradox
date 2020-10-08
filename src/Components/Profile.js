@@ -16,7 +16,7 @@ class Profile extends React.Component {
             },
             body: JSON.stringify({status: status})
         }
-        fetch(`http://localhost:3000/prizes/${prize.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/${prize.id}`, options)
         .then(()=> this.props.render() )
     }
 

@@ -14,7 +14,7 @@ class Analysis extends React.Component {
    }
 
   fetchTransactions = () => {
-    fetch('http://localhost:3000/accounts')
+    fetch('https://thrift-paradox-api.herokuapp.com/transactions')
     .then(response => response.json())
     .then(data => {
       let savings = data.map(data => data.saving)

@@ -17,7 +17,7 @@ class HomeContainer extends React.Component {
     }
 
     fetchAccount = () => {
-        fetch('http://localhost:3000/accounts')
+        fetch('https://thrift-paradox-api.herokuapp.com/accounts')
         .then(response => response.json())
         .then(data => {
             let id = data.map(account => account.id)
@@ -40,12 +40,12 @@ class HomeContainer extends React.Component {
             },
             body: JSON.stringify({saving: newSaving})
         }
-        fetch(`http://localhost:3000/accounts/${this.state.account_id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/accounts/${this.state.account_id}`, options)
         .then(()=> this.fetchAccount())
     }
 
     fetchTransactions = () => {
-        fetch('http://localhost:3000/transactions')
+        fetch('https://thrift-paradox-api.herokuapp.com/transactions')
         .then(response => response.json())
         .then(data => {
              this.setState({ transactions: data })
@@ -59,7 +59,7 @@ class HomeContainer extends React.Component {
 
     
      transactionHandler = (transObj) => {
-        fetch('http://localhost:3000/transactions', {
+        fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ class HomeContainer extends React.Component {
             },
             body: JSON.stringify(trans_obj)
         }
-        fetch(`http://localhost:3000/transactions/${trans_obj.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/transactions${trans_obj.id}`, options)
     }
 
     componentDidUpdate(prev, after) {
