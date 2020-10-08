@@ -5,7 +5,6 @@ import '../App.css'
 class Profile extends React.Component {
 
     clickHandler = (prize) => {
-        console.log(prize)
         let status = prize.status = false
 
         const options = {
@@ -16,7 +15,7 @@ class Profile extends React.Component {
             },
             body: JSON.stringify({status: status})
         }
-        fetch(`https://thrift-paradox-api.herokuapp.com/${prize.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/prizes/${prize.id}`, options)
         .then(()=> this.props.render() )
     }
 
