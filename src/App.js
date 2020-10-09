@@ -122,7 +122,7 @@ class App extends React.Component {
           },
           body: JSON.stringify({item: transactionObj.item, category: transactionObj.category})
         }
-        fetch(`https://thrift-paradox-api.herokuapp.com/${transactionObj.id}`, options)
+        fetch(`https://thrift-paradox-api.herokuapp.com/transactions/${transactionObj.id}`, options)
         .then(()=> this.props.history.push('/history'))
       }
 
@@ -147,7 +147,7 @@ class App extends React.Component {
                             let id = parseInt(match.params.id)
                             let edit = this.state.transactions.find((transactionObj) => transactionObj.id ===id)
                             return (
-                                edit ? <EditTransaction transaction={edit} submitHandler={this.editSubmit} /> : <h3>Not Found</h3>
+                                edit ? <EditTransaction transaction={edit} account_id={this.state.account_id} submitHandler={this.editSubmit} /> : <h3>Not Found</h3>
                             )
                         }}/>
         <Route exact path="/sorry" render={() => <Sorry />} />

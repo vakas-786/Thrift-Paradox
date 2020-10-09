@@ -8,7 +8,6 @@ class Transaction extends React.Component {
 
     routeHelper=()=> {
         let transaction = this.props.transactions
-        console.log('route', transaction.id)
         let path = `/transactions/${transaction.id}/edit`;
         this.props.history.push(path)
       }

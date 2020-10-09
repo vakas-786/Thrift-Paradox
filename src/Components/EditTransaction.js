@@ -14,7 +14,7 @@ class EditTransaction extends React.Component {
         category: this.props.transaction.category,
         amount: this.props.transaction.amount,
         date: this.props.transaction.date,
-        account_id: 2
+        account_id: this.props.account_id
     }
 
     changeHandler = (e) => {
