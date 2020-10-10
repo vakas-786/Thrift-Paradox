@@ -28,7 +28,7 @@ class HomeContainer extends React.Component {
       submitHandler = (saving) => {
         let origSaving = this.state.account.map(accountObj => accountObj.saving)
         let newSaving = (parseFloat(origSaving) + parseFloat(saving))
-        if (origSaving < 2000 && newSaving > 2000) {
+        if (origSaving < 2000 && newSaving >= 2000) {
         this.setState({token: this.state.token +1})
         }
         origSaving = newSaving
@@ -122,7 +122,6 @@ class HomeContainer extends React.Component {
     <Progress animated value={parseFloat(saving)} max={2000} color="success" >{saving<2000 ? (100*(saving/2000)).toFixed(0) : 100}%</Progress>
     </>
     }
-    <h7 className="badge-container" style={{color: 'white'}}>Progress Bar</h7>
 </div>
     
         <br></br>
