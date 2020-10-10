@@ -1,8 +1,7 @@
 import React from 'react'
 import { withRouter} from 'react-router-dom'
 import '../App.css'
-import { Form, FormGroup, Input  } from 'reactstrap'
-
+import { Form, FormGroup, Input,  } from 'reactstrap'
 
 
 class EditTransaction extends React.Component {
@@ -17,6 +16,8 @@ class EditTransaction extends React.Component {
         account_id: this.props.account_id
     }
 
+    
+
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -27,6 +28,7 @@ class EditTransaction extends React.Component {
     }
 
     render() {
+
         return(
             <div className='edit-form'>
             <h1 className="text-center" style={{color: 'white', margin: 'auto', padding: '10px'}}>Update Item Description and Category</h1>

@@ -122,6 +122,7 @@ class HomeContainer extends React.Component {
     <Progress animated value={parseFloat(saving)} max={2000} color="success" >{saving<2000 ? (100*(saving/2000)).toFixed(0) : 100}%</Progress>
     </>
     }
+    <h7 className="badge-container" style={{color: 'white'}}>Progress Bar</h7>
 </div>
     
         <br></br>

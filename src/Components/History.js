@@ -22,7 +22,6 @@ class History extends React.Component {
       }
 
       deleteTransaction = (trans_obj) => {
-        console.log(trans_obj)
         let newArr = this.state.transactions.filter(transactions => transactions.id !== trans_obj.id)
         this.setState({transactions: newArr})
         const options = {
