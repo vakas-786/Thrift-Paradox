@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css'
-import {Form, FormGroup, Input } from 'reactstrap'
+import {Form, FormGroup, Input, FormFeedback } from 'reactstrap'
 
  
 class Login extends React.Component {
@@ -27,13 +27,15 @@ submitHandler = (e) => {
       <Form  className="login-form" onSubmit={this.submitHandler} >
         <h1 className="text-center" style={{color: 'white'}}>Thrift Paradox</h1>
         
-          <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}}>
-          <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} /> 
+          <FormGroup style={{border: '.0625rem solid rgba(34,42,66,.05)'}}>
+            {this.props.error === 'Invalid username or password' ?<> <Input invalid style={{maxwidth: '333 px'}} type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} /> <FormFeedback>Incorrect Username or Password.</FormFeedback></>:
+            <Input style={{maxwidth: '333 px'}} type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} /> }
           </FormGroup>
-          <FormGroup style={{backgroundColor: '#525f7f', color: 'white' ,border: '.0625rem solid rgba(34,42,66,.05)'}}>
-          <Input style={{backgroundColor: '#525f7f', color: "white"}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} /> 
+          <FormGroup style={{border: '.0625rem solid rgba(34,42,66,.05)'}}>
+            {this.props.error === 'Invalid username or password' ? <><Input invalid style={{maxwidth: '333 px'}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/><FormFeedback>Incorrect Username or Password.</FormFeedback> </>:
+            <Input style={{maxwidth: '333 px'}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />}
           </FormGroup>
-        <Input style={{width: '20%', margin: 'auto', backgroundColor: '#525f7f', color: "white"}} type="submit" value="Login" /> 
+        <Input style={{width: '20%', margin: 'auto', backgroundColor: '#525f7f', color: "white", maxwidth: '333 px'}} type="submit" value="Login" /> 
       </Form>
       </div>
     )
