@@ -15,9 +15,9 @@ class Transaction extends React.Component {
     render() {
         let sign = this.props.transactions.type_trans === 'Expense' ? '-' : '+'
     return(
-        <Table className='transaction-table' style={{backgroundColor: '#525f7f', color: "white"}}>
-            <thead >
-                <tr >
+        <Table className='transaction-table' style={{backgroundColor: '#525f7f', color: "white", maxwidth: "333px"}}>
+            <thead className="text-center">
+                <tr className='text-center' >
                     <th>#</th>
                     <th>Income/Expense</th>
                     <th>Category</th>
@@ -27,8 +27,8 @@ class Transaction extends React.Component {
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody >
-                <tr >
+            <tbody className='text-center'>
+                <tr className='text-center' >
                     <th scope="row">{this.props.row +1}</th>
                     <td>{this.props.transactions.type_trans}</td>
                     <td>{this.props.transactions.category}</td>

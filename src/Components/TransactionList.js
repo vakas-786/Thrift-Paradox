@@ -1,5 +1,6 @@
 import React from 'react'
 import Transaction from './Transaction'
+import { Link } from 'react-router-dom'
 import '../App.css'
 
 
@@ -12,8 +13,8 @@ const TransactionList = (props) => {
     return (
         <>
         <h1 style={{color: 'white', padding: '15px'}}>Recent Transactions</h1>
-        <h3>All Transactions...</h3>
         {renderTransactions.slice(0,4)}
+        <Link to="/history"><h3 style={{color: 'white', padding: '5px'}}>All Transactions...</h3></Link>
         </>
     )
 }
