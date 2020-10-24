@@ -30,7 +30,7 @@ class TransactionForm extends React.Component {
         <Form className='transaction-form' style={{backgroundColor: '#525f7f', color: "white",   width: '70%', padding: '5px'}} onSubmit={this.submitHandler} inline >
             <div>
               <FormGroup style={{backgroundColor: '#525f7f', border: '.0625rem solid rgba(34,42,66,.05)'}} className="mb-2 mr-sm-2 mb-sm-0">
-              <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="item"  value={this.state.item} onChange={this.changeHandler} />
+              <Input style={{backgroundColor: '#525f7f', color: "white"}} type="text" name="item" placeholder='Enter an Item' value={this.state.item} onChange={this.changeHandler} />
               </FormGroup>
             </div>
             <div>

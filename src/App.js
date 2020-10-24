@@ -17,7 +17,8 @@ class App extends React.Component {
     account: [],
     transactions: [],
     savings: 0,
-    account_id: 0
+    account_id: 0,
+    error: ''
   }
 
   fetchUser = () => {
@@ -71,9 +72,10 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
+      this.setState({error: data.message})
       if (data.jwt !== undefined) {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, ()=> this.props.history.push("/"))
+        this.setState({user: data.user, error: ''}, ()=> this.props.history.push("/"))
       }
     })
   }
@@ -154,7 +156,7 @@ class App extends React.Component {
         </>
         :
         <> 
-        <Route path="/login" render={() => <Login loginHandler={this.loginHandler} />} />
+        <Route path="/login" render={() => <Login error={this.state.error} loginHandler={this.loginHandler} />} />
         </>
         }
       </Switch>
