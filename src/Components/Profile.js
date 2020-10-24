@@ -5,13 +5,15 @@ import '../App.css'
 class Profile extends React.Component {
 
     clickHandler = (prize) => {
+        let token = localStorage.getItem("token")
         let status = prize.status = false
 
         const options = {
             method: 'PATCH',
-            headers: {
-                 Authorization: `Bearer ${token}` 
-            },
+            headers: { 'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+             Accept: "application/json",
+         },
             body: JSON.stringify({status: status})
         }
         fetch(`https://thrift-paradox-api.herokuapp.com/prizes/${prize.id}`, options)

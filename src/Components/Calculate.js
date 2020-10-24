@@ -12,7 +12,7 @@ const Calculate = (props) => {
 
     const totalExpense = (expenseAmount.filter(trans => trans > 0).reduce((acc, transaction) => (acc += transaction), 0) * -1).toFixed(2)
 
-    let savings = props.account.map(accountObj => accountObj.saving)
+    let savings = props.account.saving
 
     return (
         <>

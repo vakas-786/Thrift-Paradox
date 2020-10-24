@@ -1,5 +1,6 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
+import { Badge } from 'reactstrap';
 import '../App.css'
 
 
@@ -12,6 +13,7 @@ class Prize extends React.Component {
     }
 
     fetchPrize = () => {
+        let token = localStorage.getItem("token")
         fetch('https://thrift-paradox-api.herokuapp.com/lottery', {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
@@ -64,6 +66,7 @@ class Prize extends React.Component {
             <img src={image} alt="prize"/>
             <h3 ><figcaption>Congratulations! You just won a {name}!</figcaption></h3>
             </figure>
+            <Link to='/profile'><h3 style={{color: 'white'}} className='text-center'><Badge color='success'>Go to Your Profile</Badge></h3></Link>
             </div>
         }
         </>

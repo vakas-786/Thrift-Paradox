@@ -17,19 +17,20 @@ class HomeContainer extends React.Component {
     }
 
     fetchAccount = () => {
+        let token = localStorage.getItem("token")
         fetch('https://thrift-paradox-api.herokuapp.com/accounts', {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
           })
         .then(response => response.json())
         .then(data => {
-            let id = data.map(account => account.id)
+            let id = data.id
             this.setState({ account: data, account_id: id })
         })
       }
 
       submitHandler = (saving) => {
-        let origSaving = this.state.account.map(accountObj => accountObj.saving)
+        let origSaving = this.state.account.saving
         let newSaving = (parseFloat(origSaving) + parseFloat(saving))
         if (origSaving < 2000 && newSaving >= 2000) {
         this.setState({token: this.state.token +1})
@@ -48,6 +49,7 @@ class HomeContainer extends React.Component {
     }
 
     fetchTransactions = () => {
+        let token = localStorage.getItem("token")
         fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
@@ -103,7 +105,7 @@ class HomeContainer extends React.Component {
     
 
    render() {
-       let saving = this.state.account.map(accountObj => accountObj.saving)
+       let saving = this.state.account.saving
     return (
         <>
         <br>

@@ -16,6 +16,7 @@ class History extends React.Component {
     }
 
     fetchTransactions = () => {
+        let token = localStorage.getItem("token")
         fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },

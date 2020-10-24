@@ -10,7 +10,7 @@ class Balance extends React.Component {
         let amount = this.props.transactions.map(transactionObj=> transactionObj.amount)
         let total = amount.reduce((acc, transaction) => (acc += transaction), 0).toFixed(2)
         let balance = total - totalExpense
-        let savings = this.props.account.map(accountObj => accountObj.saving)
+        let savings = this.props.account.saving
         let finalTotal = parseFloat(balance - savings)
         
     return(
