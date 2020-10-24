@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from 'reactstrap'
 import '../App.css'
+import { NavLink as RRNavLink } from 'react-router-dom'
 import { Navbar, Nav, NavItem, NavLink, NavbarText} from 'reactstrap'
  
 class NavBar extends React.Component {
@@ -20,29 +21,29 @@ class NavBar extends React.Component {
         </NavItem>  
       }
       <NavItem >
-        <NavLink className='nav-link-tag'
-        href="/" active
+        <NavLink tag={RRNavLink} className='nav-link-tag'
+        to="/" activeClassName="active" exact path="/"
         >Home</NavLink>
         </NavItem>
         
         <NavItem >
-        <NavLink className='nav-link-tag'
-        href="/profile" active
+        <NavLink tag={RRNavLink} className='nav-link-tag'
+        to="/profile" activeClassName="active" exact path="/profile"
         >Profile</NavLink>
         </NavItem>
 
-        <NavItem active >
-        <NavLink className='nav-link-tag'
-        href="/history" active
+        <NavItem  >
+        <NavLink tag={RRNavLink} className='nav-link-tag'
+        to="/history" activeClassName="active" exact path="/history"
         >History</NavLink>
         </NavItem>
         
         <NavItem  >
-        <NavLink className='nav-link-tag'
-        href="/analysis" active 
+        <NavLink tag={RRNavLink} className='nav-link-tag'
+        to="/analysis" activeClassName="active" exact path="/analysis"
         >Analysis</NavLink>
         </NavItem>
-        <NavbarText style={{color: 'white'}} className="ml-auto">Thrift Paradox</NavbarText>
+        <a className="ml-auto" href='https://github.com/vakas-786/Thrift-Paradox'><NavbarText style={{color: 'white'}} className="ml-auto">Thrift Paradox</NavbarText></a>
         </Nav>
         </Navbar>
       </div>
