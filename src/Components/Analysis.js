@@ -14,7 +14,11 @@ class Analysis extends React.Component {
    }
 
   fetchTransactions = () => {
-    fetch('https://thrift-paradox-api.herokuapp.com/transactions')
+    let token = localStorage.getItem("token")
+    fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
     .then(response => response.json())
     .then(data => {
       let savings = data.map(data => data.saving)
