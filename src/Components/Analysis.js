@@ -21,8 +21,8 @@ class Analysis extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      let savings = data.map(data => data.saving)
-      this.setState({savings: savings[0]})
+      let savings = data.saving
+      this.setState({savings: savings})
     })
   }
 
