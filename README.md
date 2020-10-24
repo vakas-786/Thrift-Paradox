@@ -3,10 +3,10 @@
 <br />
 <p align="center">
   <a >
-    <img src="/thrift_demo.gif">
+    <img src="/thrift_demo.gif" width="800" height="550" >
   </a>
 
-  <h3 align="center">Thrift Paradox</h3>
+  <h1 align="center">Thrift Paradox</h1>
 
   <p align="center">
     A personal expense tracker that rewards users for saving money with digital prizes. 
