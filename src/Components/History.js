@@ -16,7 +16,10 @@ class History extends React.Component {
     }
 
     fetchTransactions = () => {
-        fetch('https://thrift-paradox-api.herokuapp.com/transactions')
+        fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          })
         .then(response => response.json())
         .then(data => this.setState({ transactions: data }))
       }

@@ -17,7 +17,10 @@ class HomeContainer extends React.Component {
     }
 
     fetchAccount = () => {
-        fetch('https://thrift-paradox-api.herokuapp.com/accounts')
+        fetch('https://thrift-paradox-api.herokuapp.com/accounts', {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          })
         .then(response => response.json())
         .then(data => {
             let id = data.map(account => account.id)
@@ -45,7 +48,10 @@ class HomeContainer extends React.Component {
     }
 
     fetchTransactions = () => {
-        fetch('https://thrift-paradox-api.herokuapp.com/transactions')
+        fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          })
         .then(response => response.json())
         .then(data => {
              this.setState({ transactions: data })

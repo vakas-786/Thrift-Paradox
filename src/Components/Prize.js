@@ -12,7 +12,10 @@ class Prize extends React.Component {
     }
 
     fetchPrize = () => {
-        fetch('https://thrift-paradox-api.herokuapp.com/lottery')
+        fetch('https://thrift-paradox-api.herokuapp.com/lottery', {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          })
         .then(response => response.json())
         .then(prize => this.setState({prize: prize}),() => console.log(this.state.prize))
     }

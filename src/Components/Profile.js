@@ -10,8 +10,7 @@ class Profile extends React.Component {
         const options = {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
+                 Authorization: `Bearer ${token}` 
             },
             body: JSON.stringify({status: status})
         }
