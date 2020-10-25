@@ -18,6 +18,11 @@
 </p>
 </p>
 
+## Login
+Create an account or login with the following credentials:
+* username: testing
+* password: password
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -39,7 +44,7 @@
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Technical Challenges
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
