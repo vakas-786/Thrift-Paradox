@@ -32,6 +32,7 @@ class Analysis extends React.Component {
 
   componentDidMount() {
     this.fetchTransactions()
+    this.props.fetchAccount()
     fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
     .then(response => response.json())
     .then(data =>{
