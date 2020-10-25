@@ -121,7 +121,7 @@ class HomeContainer extends React.Component {
         <Button style={{padding: '11px'}} color="success" onClick={this.props.clickHandler}>Enter Lottery</Button><br></br> 
         </div>
          <br></br>
-         {saving > 2000 ?
+         {saving >= 2000 ?
          <>
     <Progress animated value={parseFloat(saving)} max={2000} color="warning" >{saving<2000 ? (100*(saving/2000)).toFixed(0) : 100}%</Progress>
     </>
