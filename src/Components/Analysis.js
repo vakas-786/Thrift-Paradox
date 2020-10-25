@@ -46,7 +46,7 @@ class Analysis extends React.Component {
     }
 
     render() {
-        let originalAmount = this.props.savings
+        let originalAmount = this.props.account.saving
         
         let thriftOne = (originalAmount * 0.30) + originalAmount
         let bankOne = (originalAmount * 0.15) + originalAmount

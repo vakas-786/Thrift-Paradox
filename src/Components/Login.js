@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css'
-import {Form, FormGroup, Input, FormFeedback } from 'reactstrap'
+import {Form, FormGroup, Input, FormFeedback, Button } from 'reactstrap'
+import {Link} from 'react-router-dom'
 
  
 class Login extends React.Component {
@@ -35,7 +36,11 @@ submitHandler = (e) => {
             {this.props.error === 'Invalid username or password' ? <><Input invalid style={{maxwidth: '333 px'}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/><FormFeedback>Incorrect Username or Password.</FormFeedback> </>:
             <Input style={{maxwidth: '333 px'}} type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />}
           </FormGroup>
-        <Input style={{width: '20%', margin: 'auto', backgroundColor: '#525f7f', color: "white", maxwidth: '333 px'}} type="submit" value="Login" /> 
+          <br></br>
+          <div className='buttons-form'>
+        <Button color='primary' type="submit" value="Login" >Login </Button>
+        <Link to='/signup'><Button>Register</Button></Link>
+        </div>
       </Form>
       </div>
     )

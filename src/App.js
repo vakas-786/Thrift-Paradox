@@ -4,6 +4,7 @@ import {  Switch, Route, withRouter } from 'react-router-dom';
 import NavBar from './Components/NavBar'
 import HomeContainer from './Containers/HomeContainer'
 import Login from './Components/Login'
+import Signup from './Components/Signup'
 import Sorry from './Components/Sorry'
 import History from './Components/History'
 import Prize from './Components/Prize'
@@ -134,6 +135,19 @@ class App extends React.Component {
         .then(()=> this.props.history.push('/history'))
       }
 
+      signupHandler = (userObj) => {
+        fetch('https://thrift-paradox-api.herokuapp.com/api/v1/users', {
+          method: 'POST',
+          headers: {
+            accepts: "application/json", 
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({ user: userObj }) 
+        })
+        .then(response => response.json())
+        .then(data => this.setState({user: data.user}),()=> this.props.history.push("/login"))
+      }
+
       
 
 
@@ -163,6 +177,7 @@ class App extends React.Component {
         :
         <> 
         <Route path="/login" render={() => <Login error={this.state.error} loginHandler={this.loginHandler} />} />
+        <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
         </>
         }
       </Switch>
