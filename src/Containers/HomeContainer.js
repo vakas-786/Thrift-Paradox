@@ -67,13 +67,14 @@ class HomeContainer extends React.Component {
 
     
      transactionHandler = (transObj) => {
+        let token = localStorage.getItem("token")
         fetch('https://thrift-paradox-api.herokuapp.com/transactions', {
             method: 'POST',
-            headers: {
+            headers: { 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body: JSON.stringify({ transaction: transObj })
+            body: JSON.stringify({ account_id: this.state.account.id, amount: transObj.amount, category: transObj.category, date: transObj.date, item: transObj.item, type_trans: transObj.type_trans  })
         })
         .then(response => response.json())
         .then(data => { this.setState({transactions: [...this.state.transactions, data], token: this.props.user.token})})
@@ -133,7 +134,7 @@ class HomeContainer extends React.Component {
 </div>
     
         <br></br>
-        <FinanceContainer id={this.props.account_id} fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
+        <FinanceContainer id={this.state.account.id} fetchTransactions ={this.fetchTransactions} transactions={this.state.transactions} submitHandler={this.transactionHandler} account={this.state.account} deleteTransaction={this.deleteTransaction} savingHandler={this.submitHandler} />
         </>
     )
     }
