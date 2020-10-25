@@ -21,8 +21,8 @@ class Analysis extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      let savings = data.map(data => data.saving)
-      this.setState({savings: savings[0]})
+      let savings = data.saving
+      this.setState({savings: savings})
     })
   }
 
@@ -46,7 +46,7 @@ class Analysis extends React.Component {
     }
 
     render() {
-        let originalAmount = this.props.savings
+        let originalAmount = this.props.account.saving
         
         let thriftOne = (originalAmount * 0.30) + originalAmount
         let bankOne = (originalAmount * 0.15) + originalAmount
