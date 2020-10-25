@@ -12,7 +12,7 @@
     A personal expense tracker that rewards users for saving money with digital prizes. 
     <br />
     <br />
-    <a href="https://thrift-paradox.herokuapp.com/">View Live Demo</a>
+    <a href="https://thrift-paradox.herokuapp.com/">Live Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues">Demo</a>
 </p>
