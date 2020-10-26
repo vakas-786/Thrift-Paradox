@@ -155,6 +155,7 @@ class App extends React.Component {
     return(
       <div className="app-container">
       <Switch>
+        <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         {this.state.user 
         
         ?
@@ -164,7 +165,6 @@ class App extends React.Component {
         <Route exact path="/profile" render={() => <ProfileContainer  user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
         <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
-        <Route exact path="/prize" render={() => <Prize user={this.state.user}/>} />
         <Route exact path="/transactions/:id/edit" render={({match})=> {
                             let id = parseInt(match.params.id)
                             let edit = this.state.transactions.find((transactionObj) => transactionObj.id ===id)
