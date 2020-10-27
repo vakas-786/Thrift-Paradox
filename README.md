@@ -97,9 +97,51 @@ let compoundedInterest = [...Array(11).keys()].map(bank => {
 
         const Intdata = [compoundedInterest][0]
 ```
-<br>
+
 The bar graph utilized the exchange rates API to calculate the value of the users savings account in their selected currency. The API returned the following data:<br>
-(Disclaimer: exchange rates are updated daily, values may differ)<br>
+(Disclaimer: value of rates may differ since they are updated daily)
+```sh
+{
+rates: {
+CAD: 1.3182164312,
+HKD: 7.7500634571,
+ISK: 139.8595481851,
+PHP: 48.4008799391,
+DKK: 6.2959641256,
+HUF: 308.8416955749,
+CZK: 23.0941704036,
+GBP: 0.7678737626,
+RON: 4.1245452238,
+SEK: 8.7549708097,
+IDR: 14714.400541501,
+INR: 74.0743717743,
+BRL: 5.6446399865,
+RUB: 76.3969032913,
+HRK: 6.4117099585,
+JPY: 105.0342668584,
+THB: 31.280142144,
+CHF: 0.9069295203,
+EUR: 0.8460952703,
+MYR: 4.1644809206,
+BGN: 1.6547931297,
+TRY: 8.0880785176,
+CNY: 6.7130890938,
+NOK: 9.2617818766,
+NZD: 1.4956426094,
+ZAR: 16.2517979524,
+USD: 1,
+MXN: 21.0428124207,
+SGD: 1.3617903376,
+AUD: 1.4038412725,
+ILS: 3.3814197479,
+KRW: 1132.3377612319,
+PLN: 3.8750317286
+},
+base: "USD",
+date: "2020-10-26"
+}
+```
+
 
 Next I collected the keys from the JSON dataset to use as options for the user to select their desired rate:
 ```sh
