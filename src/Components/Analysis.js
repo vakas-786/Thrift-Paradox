@@ -50,11 +50,11 @@ class Analysis extends React.Component {
 
     render() {
         
-       let compoundedInterest = [...Array(11).keys()].map(bank => { 
+       let compoundedInterest = [...Array(11).keys()].map(year => { 
           let nameHash = Object()
-          nameHash['name'] = (2020+bank)
-          nameHash['thrift'] = parseFloat((this.props.account.saving*(1.3**bank)).toFixed(2))
-          nameHash['avg'] = parseFloat((this.props.account.saving*(1.15**bank)).toFixed(2))
+          nameHash['name'] = (2020+year)
+          nameHash['thrift'] = parseFloat((this.props.account.saving*(1.3**year)).toFixed(2))
+          nameHash['avg'] = parseFloat((this.props.account.saving*(1.15**year)).toFixed(2))
           return nameHash
        })
 
