@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a >
-    <img src="/thrift_demo.gif" width="800" height="550" >
+    <img src="/thrift_demo.gif" width="570" height="390" >
   </a>
 
   <h1 align="center">Thrift Paradox</h1>
