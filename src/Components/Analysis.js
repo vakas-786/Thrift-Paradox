@@ -37,8 +37,9 @@ class Analysis extends React.Component {
     fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
     .then(response => response.json())
     .then(data =>{
-      this.setState({rates: data.rates})
-      this.setState({ currency: Object.keys(data.rates)})
+      this.setState({rates: data.rates,
+        currency: Object.keys(data.rates)
+      })
     })
   }
 
