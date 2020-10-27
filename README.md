@@ -85,20 +85,19 @@ end
 <b>2) Analysis Charts</b> <br>
 The analysis portion of the app uses the recharts library for data visualization. The cartesian graph displayed the user's savings amount after 10 years with compounded interest. The bar graph displayed the user's savings amount on the red bar and the amount in foreign currencies on the blue bar.<br>
 
-The values were calculated for 10 years using 30% as the interest rate for a Thrift paradox savings account and 15% for the other savings account. Below is a snippet of the first three years that were calculated:
+The values were calculated for 10 years using 30% as the interest rate for a Thrift paradox savings account and 15% for the other savings account. Once the amounts were calculated, they were passed down as a hash to the variable Intdata which was used to populate the cartesian graph. Below is a snippet of the code that was used to calculate the compounded interest:
 ```sh
-let originalAmount = this.props.savings
-        
-        let thriftOne = (originalAmount * 0.30) + originalAmount
-        let bankOne = (originalAmount * 0.15) + originalAmount
+let compoundedInterest = [...Array(11).keys()].map(bank => { 
+          let nameHash = Object()
+          nameHash['name'] = (2020+bank)
+          nameHash['thrift'] = parseFloat((this.props.account.saving*(1.3**bank)).toFixed(2))
+          nameHash['avg'] = parseFloat((this.props.account.saving*(1.15**bank)).toFixed(2))
+          return nameHash
+       })
 
-        let thriftTwo = (thriftOne * 0.30) + thriftOne
-        let bankTwo = (bankOne * 0.15) + bankOne
-
-        let thriftThree = (thriftTwo * 0.30) + thriftTwo
-        let bankThree = (bankTwo * 0.15) + bankTwo
+        const Intdata = [compoundedInterest][0]
 ```
-Then the calculated amounts were passed down to the variable Intdata which contained the data that the graph displayed.<br>
+<br>
 The bar graph utilized the exchange rates API to calculate the value of the users savings account in their selected currency. The API returned the following data:<br>
 (Disclaimer: exchange rates are updated daily, values may differ)
 ```sh
