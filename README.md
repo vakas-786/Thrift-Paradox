@@ -100,7 +100,7 @@ let originalAmount = this.props.savings
 ```
 Then the calculated amounts were passed down to the variable Intdata which contained the data that the graph displayed.<br>
 The bar graph utilized the exchange rates API to calculate the value of the users savings account in their selected currency. The API returned the following data:<br>
-(disclaimer: exchange rates are updated daily, values may differ)
+(Disclaimer: exchange rates are updated daily, values may differ)
 ```sh
 {
 rates: {
@@ -142,7 +142,7 @@ base: "USD",
 date: "2020-10-26"
 }
 ```
-Next I had to iterate through the data and set the keys from the dataset as options for user to select their desired rate:
+Next I collected the keys from the JSON dataset to use as options for the user to select their desired rate:
 ```sh
   fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
       .then(response => response.json())
@@ -151,7 +151,7 @@ Next I had to iterate through the data and set the keys from the dataset as opti
         this.setState({ currency: Object.keys(data.rates)})
     })
 ```
-I then filtered out USD since that was our base currency and rendered the options for users to select from: 
+I then filtered out USD, since it is our base currency, and rendered the options for users to select from: 
 ```sh
   currencyOption = () => {
     let currency = this.state.currency.filter(currency => currency !== 'USD')
