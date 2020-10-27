@@ -142,11 +142,12 @@ date: "2020-10-26"
 
 Next I collected the keys from the JSON dataset to use as options for the user to select their desired rate:
 ```sh
-  fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
+      fetch( 'https://api.exchangeratesapi.io/latest?base=USD' )
       .then(response => response.json())
       .then(data =>{
-        this.setState({rates: data.rates})
-        this.setState({ currency: Object.keys(data.rates)})
+        this.setState({rates: data.rates,
+        currency: Object.keys(data.rates)
+      })
     })
 ```
 I then filtered out USD, since it is our base currency, and rendered the options for users to select from: 
