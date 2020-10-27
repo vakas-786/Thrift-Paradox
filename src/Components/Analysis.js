@@ -51,15 +51,13 @@ class Analysis extends React.Component {
     render() {
         
        let compoundedInterest = [...Array(11).keys()].map(year => { 
-          let nameHash = Object()
-          nameHash['name'] = (2020+year)
-          nameHash['thrift'] = parseFloat((this.props.account.saving*(1.3**year)).toFixed(2))
-          nameHash['avg'] = parseFloat((this.props.account.saving*(1.15**year)).toFixed(2))
-          return nameHash
+          let hash = Object()
+          hash['year'] = (2020+year)
+          hash['thrift'] = parseFloat((this.props.account.saving*(1.3**year)).toFixed(2))
+          hash['avg'] = parseFloat((this.props.account.saving*(1.15**year)).toFixed(2))
+          return hash
        })
 
-        const Intdata = [compoundedInterest][0]
-      
         let newRates = (() => {
           return (this.props.savings * this.state.rates[this.state.selected]).toFixed(2)
         })()
@@ -106,14 +104,14 @@ class Analysis extends React.Component {
         <AreaChart
           width={400}
           height={250}
-          data={Intdata}
+          data={compoundedInterest}
           syncId="anyId"
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="year" />
           <YAxis type="number" domain={[0, 20000]} />
           <Tooltip />
           <Area type="monotone" dataKey="thrift" stroke="#00bfdb" fill='#40f3fa' />
@@ -122,14 +120,14 @@ class Analysis extends React.Component {
         <AreaChart
           width={400}
           height={250}
-          data={Intdata}
+          data={compoundedInterest}
           syncId="anyId"
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="year" />
           <YAxis type="number" domain={[0, 10000]} />
           <Tooltip />
           <Area type="monotone" dataKey="avg" stroke="#82ca9d" fill="#1ddb00" />
