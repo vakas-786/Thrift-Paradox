@@ -50,8 +50,8 @@ My app is a personal expense tracker that allows users to enter in their transac
 <!-- USAGE EXAMPLES -->
 ## Technical Challenges
 
-1. Lottery System <br>
-A user is awarded a token once they save up to $2000. In order to check if the user has a token to enter the lottery and award them a prize, I created a custom route /lottery which randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br>
+<b>1) Lottery System</b> <br>
+A user is awarded a token once they save up to $2000. In order to check if the user has a token to enter the lottery and award them a prize, I created a custom route /lottery which randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br></br>
 <b>Prize Controller</b>
 ```sh
    def lottery
@@ -81,8 +81,8 @@ class Prize < ApplicationRecord
   end 
 end
 ```
-
-2. Analysis Charts <br>
+<br>
+<b>2) Analysis Charts</b> <br>
 The analysis portion of the app uses the recharts library for data visualization. The cartesian graph displayed the user's savings amount after 10 years with compounded interest. The bar graph displayed the user's savings amount on the red bar and the amount in foreign currencies on the blue bar.<br>
 
 The values were calculated for 10 years using 30% as the interest rate for a Thrift paradox savings account and 15% for the other savings account. Below is a snippet of the first three years that were calculated:
@@ -172,9 +172,9 @@ let newRates = (() => {
           }
         ]
 ```
+<br>
 
-
-3. Lottery Animation
+<b>3) Lottery Animation</b> <br>
 To add some suspense for the user prior to receiving their prize I added an animation that lasted for a couple seconds. This was done by setting a timer and conditionally rendering a gif that took up the entire size of the screen.<br>
 
 Here is the code for the timer. The gif lasts for 5 seconds, so I set the timer to begin at 5. 
