@@ -41,81 +41,24 @@ class Analysis extends React.Component {
     })
   }
 
+
   currencyOption = () => {
     let currency = this.state.currency.filter(currency => currency !== 'USD')
     return currency.map((currency, index)=> <option key={index} value={currency}>{currency}</option>)
     }
 
     render() {
-        let originalAmount = this.props.account.saving
         
-        let thriftOne = (originalAmount * 0.30) + originalAmount
-        let bankOne = (originalAmount * 0.15) + originalAmount
+       let compoundedInterest = [...Array(11).keys()].map(bank => { 
+          let nameHash = Object()
+          nameHash['name'] = (2020+bank)
+          nameHash['thrift'] = parseFloat((this.props.account.saving*(1.3**bank)).toFixed(2))
+          nameHash['avg'] = parseFloat((this.props.account.saving*(1.15**bank)).toFixed(2))
+          return nameHash
+       })
 
-        let thriftTwo = (thriftOne * 0.30) + thriftOne
-        let bankTwo = (bankOne * 0.15) + bankOne
-
-        let thriftThree = (thriftTwo * 0.30) + thriftTwo
-        let bankThree = (bankTwo * 0.15) + bankTwo
-
-        let thriftFour = (thriftThree * 0.30) + thriftThree
-        let bankFour = (bankThree * 0.15) + bankThree
-
-        let thriftFive = (thriftFour * 0.30) + thriftFour
-        let bankFive = (bankFour * 0.15) + bankFour
-
-        let thriftSix = (thriftFive * 0.30) + thriftFive
-        let bankSix = (bankFive * 0.15) + bankFive
-
-        let thriftSeven = (thriftSix * 0.30) + thriftSix
-        let bankSeven = (bankSix * 0.15) + bankSix
-
-        let thriftEight = (thriftSeven * 0.30) + thriftSeven
-        let bankEight = (bankSeven * 0.15) + bankSeven
-
-        let thriftNine = (thriftEight * 0.30) + thriftEight
-        let bankNine = (bankEight * 0.15) + bankEight
-
-        let thriftTen = (thriftNine * 0.30) + thriftNine
-        let bankTen = (bankNine * 0.15) + bankNine
-
-
-        const Intdata = [
-          {
-            name: 2020, thrift: this.props.savings, avg: this.props.savings
-          },
-          {
-            name: 2021, thrift: thriftOne.toFixed(2), avg: bankOne.toFixed(2)
-          },
-          {
-            name: 2022, thrift: thriftTwo.toFixed(2), avg: bankTwo.toFixed(2),
-          },
-          {
-            name: 2023, thrift: thriftThree.toFixed(2), avg: bankThree.toFixed(2),
-          },
-          {
-            name: 2024, thrift: thriftFour.toFixed(2), avg: bankFour.toFixed(2),
-          },
-          {
-            name: 2025, thrift: thriftFive.toFixed(2), avg: bankFive.toFixed(2),
-          },
-          {
-            name: 2026, thrift: thriftSix.toFixed(2), avg: bankSix.toFixed(2),
-          },
-          {
-            name: 2027, thrift: thriftSeven.toFixed(2), avg: bankSeven.toFixed(2),
-          },
-          {
-            name: 2028, thrift: thriftEight.toFixed(2), avg: bankEight.toFixed(2),
-          },
-          {
-            name: 2029, thrift: thriftNine.toFixed(2), avg: bankNine.toFixed(2),
-          },
-          {
-            name: 2030, thrift: thriftTen.toFixed(2), avg: bankTen.toFixed(2),
-          },
-    
-        ]
+        const Intdata = [compoundedInterest][0]
+      
         let newRates = (() => {
           return (this.props.savings * this.state.rates[this.state.selected]).toFixed(2)
         })()

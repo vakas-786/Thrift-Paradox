@@ -8,7 +8,6 @@ class Prize extends React.Component {
 
     state ={
         prize: [],
-        user: [],
         timeLeft: 5
     }
 
@@ -35,8 +34,7 @@ class Prize extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("before update", prevProps.user.token)
-        console.log('after update', prevState.user)
+        console.log("Winner!")
         if (prevState.timeLeft === 1){
             clearInterval(this.interval)
            }
