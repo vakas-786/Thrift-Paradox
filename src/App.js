@@ -164,7 +164,7 @@ class App extends React.Component {
         <Route exact path="/" render={() => <HomeContainer user={this.state.user} fetchTransactions ={this.fetchTransactions} account_id={this.state.account_id} clickHandler={this.clickHandler} submitHandler={this.transactionHandler} transactions={this.state.transactions}  />} />
         <Route exact path="/profile" render={() => <ProfileContainer  user={this.state.user} fetchUser={this.fetchUser}/>} />
         <Route exact path="/history" render={() => <History />} />
-        <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} />} />
+        <Route exact path="/analysis" render={() => <Analysis fetchAccount={this.fetchAccount} savings={this.state.savings}  account={this.state.account} transactions={this.state.transactions} fetchUser={this.fetchUser} />} />
         <Route exact path="/transactions/:id/edit" render={({match})=> {
                             let id = parseInt(match.params.id)
                             let edit = this.state.transactions.find((transactionObj) => transactionObj.id ===id)
