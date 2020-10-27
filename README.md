@@ -22,8 +22,8 @@
 
 ## Login
 Create an account or login with the following credentials:
-* username: testing
-* password: password
+* Username: testing
+* Password: password
 
 
 <!-- ABOUT THE PROJECT -->
@@ -52,7 +52,7 @@ My app is a personal expense tracker that allows users to enter in their transac
 
 1. Lottery System <br>
 A user is awarded a token once they save up to $2000. In order to check if the user has a token to enter the lottery and award them a prize, I created a custom route /lottery which randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br>
-Prize Controller
+<b>Prize Controller</b>
 ```sh
    def lottery
         if current_user.token > 0 
@@ -66,7 +66,7 @@ Prize Controller
         end
    end 
 ```
-Prize.rb
+<b>Prize.rb</b>
 ```
 class Prize < ApplicationRecord
   belongs_to :user
