@@ -51,7 +51,7 @@ My app is a personal expense tracker that allows users to enter in their transac
 ## Technical Challenges
 
 <b>1) Lottery System</b> <br>
-A user is awarded a token once they save up to $2000. In order to check if the user has a token to enter the lottery and award them a prize, I created a custom route /lottery which randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br></br>
+A user is awarded a token once they save up to $2000. The backend checks if the user has a token to enter the lottery and if they did, they were given their prize. I created a custom route named /lottery which was used to fetch a randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br></br>
 <b>Prize Controller</b>
 ```sh
    def lottery
