@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a >
+  <a href="https://youtu.be/1LudzIYfRiw" >
     <img src="/thrift_demo.gif" width="570" height="390" >
   </a>
 
