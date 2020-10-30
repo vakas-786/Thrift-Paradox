@@ -29,7 +29,7 @@ Create an account or login with the following credentials:
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 The name of the app, "Thrift Paradox" was inspired by the name of an economic theory called the Paradox of Thrift. The theory argues that personal savings can be detrimental to overall economic growth, especially during a recession. It is based on a circular flow of the economy in which current spending drives future spending. Today, the nation finds itself in a tough economic situation and many, rightfully so, are looking to save as much as they can to ensure a secure a future while making ends meet.<br></br>
-My app is a personal expense tracker that allows users to enter in their transactions, edit, and delete them. In the main dashboard users can find their total income and expenses along with their balance. These numbers are calculated from the entered transactions. Users are able to take a portion of their balance and place it in their savings account as well. When a user places $2000 or more into their savings account, they are awarded a digital prize that can be redeemed for cash. By rewarding users for saving money for the long term, it allows them to potentially have enough cash to spend short term and effecitvely solve the issue that the Paradox of Thrift presented. There is also an analysis portion within the app that calculates the value of your savings account with compounded interest after ten years. With the help of the exchange rates API users can also see what the value of their savings are in other currencies displayed on a bar graph. 
+My app is a personal expense tracker that allows users to enter in their transactions, edit, and delete them. In the main dashboard users can find their total income and expenses along with their balance. These numbers are calculated from the entered transactions. Users are able to take a portion of their balance and place it in their savings account as well. When a user places $2000 or more into their savings account, they are awarded a digital prize that can be redeemed for cash. Users are also unable to recieve duplicate prizes. By rewarding users for saving money for the long term, it allows them to potentially have enough cash to spend short term and effecitvely solve the issue that the Paradox of Thrift presented. There is also an analysis portion within the app that calculates the value of your savings account with compounded interest after ten years. With the help of the exchange rates API users can also see what the value of their savings are in other currencies displayed on a bar graph. 
 
 
 ### Built With
@@ -51,7 +51,7 @@ My app is a personal expense tracker that allows users to enter in their transac
 ## Technical Challenges
 
 <b>1) Lottery System</b> <br>
-A user is awarded a token once they save up to $2000. The backend checks if the user has a token to enter the lottery and if they did, they were given their prize. I created a custom route named /lottery which was used to fetch a randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile in a prize's status is true. This also prevents a user from having duplicate prizes. <br></br>
+A user is awarded a token once they save up to $2000. The backend checks if the user has a token to enter the lottery and if they do, they are given their prize. I created a custom route named /lottery which was used to fetch a randomly selected a prize. I also implented callbacks from the Prize controller to then remove the token after entering the lottery. The status of the prize is set from false to true as well. Prizes are only rendered on a user's profile if a prize's status is true. <br></br>
 <b>Prize Controller</b>
 ```sh
    def lottery
@@ -191,8 +191,7 @@ state ={
       }
       
       componentDidUpdate(prevProps, prevState) {
-        console.log("winner", prevProps.user.token)
-        console.log("winner", prevState.user)
+        console.log("winner")
         if (prevState.timeLeft === 1){
             clearInterval(this.interval)
            }
